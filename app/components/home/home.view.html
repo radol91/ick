@@ -1,0 +1,29 @@
+<div class="row clearfix">
+    <div class="col-md-3 column">
+        <div class="receipt_categoris_list">
+            <nav  id="container" class="nav-sidebar">
+                <ul class="nav">                  
+                    <li ng-repeat="category in categories"><a href="javascript:;">{{category}}{{testowe}}</a></li>
+                    <li class="nav-divider"></li>
+                    <li><a href="javascript:;"><i class="glyphicon glyphicon-star-empty"></i>Ulubione</a></li>
+                </ul>                 
+            </nav>    
+        </div>
+    </div>
+    <div class="col-md-9 column">
+        <div id="container" class="receipt_items_list">
+          <div class="row">
+            <div ng-repeat="reciept in reciepts" class="col-sm-4 col-lg-4 col-md-4">
+                <div class="thumbnail reciept_list_element" ng-click="showReciept(reciept.id)">
+                    <img src="{{reciept.img_url}}" alt="">
+                    <div class="content">
+                        <h4>{{reciept.title}}</h4>
+                        <p class="reciept_short_desc">{{reciept.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+

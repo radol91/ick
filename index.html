@@ -1,0 +1,55 @@
+<!DOCTYPE html ng-app="kuchnia4U" >
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="kuchnia4U">
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <link rel="stylesheet" href="assets/css/bootstrapFlatly/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<title>Kuchnia4U</title>
+<body>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <nav class="navbar navbar-default" role="navigation">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span>
+                                <span class="icon-bar"></span></button>
+                                <span class="navbar-brand">Kuchnia4U</span>
+                        </div>
+                        <div class="collapse navbar-collapse im-centered" id="bs-example-navbar-collapse-3">
+                                <ul class="nav navbar-nav">
+                                    <li>
+                                        <a href="#/">Kategorie</a>
+                                    </li>
+                                    <li>
+                                        <a href="#/search">Wyszukaj</a>
+                                    </li>
+                                    <li>
+                                        <a href="#/shopping_list">Lista zakupów</a>
+                                    </li>
+                                </ul>                                
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!-- start dynamic content -->
+            <div ui-view=""></div>
+            <!-- end dynamic content -->
+        </div>
+    </body>
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/css/bootstrap.min.css"></script>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+    <script src="/app/app.config.js"></script>
+    <script src="/app/app.states.js"></script>
+
+    <script src="/app/services/category.service.js"></script>
+    <script src="/app/services/reciepts.service.js"></script>
+
+    <script src="/app/components/home/home.controller.js"></script>
+    <script src="/app/components/reciept/reciept.controller.js"></script>
+    </html>
