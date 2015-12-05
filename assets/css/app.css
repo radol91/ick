@@ -4,7 +4,9 @@ body {
 	background-repeat: no-repeat;
 }
 
-.column { padding:  2px 0;}
+.column { 
+    padding:  2px 0;
+}
 
 #container {
     height: 85%;
@@ -21,6 +23,15 @@ body {
 ul.nav, ul.navbar-nav 
 {
     text-align: left;
+}
+
+.navbar.center .navbar-inner {
+    text-align: center;
+}
+
+.navbar.center .navbar-inner .nav {
+    display:inline-block;
+    float: none;
 }
 
 .navbar-default .navbar-nav li {
@@ -118,13 +129,20 @@ div.reciept_list_element:hover
     cursor: pointer;
 }
 
+img.reciept_list_element
+{
+    max-height: 100px;
+}
+
 p.reciept_short_desc
 {
     text-overflow: ellipsis;
+    overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
+
 
 .reciept_content
 {

@@ -8,36 +8,39 @@ function recieptsService($http, $q) {
 
     var reciepts = []; 
 		
-    reciepts[0] = {id: 1, title: "Reciept 1", description: "Lorem ipsum tekst tekst tekst. Lorem ipsum tekst tekst tekst. Lorem ipsum tekst tekst tekst. Lorem ipsum tekst tekst tekst.", img_url: ""};
-	reciepts[1] = {id: 2, title: "Reciept 2", description: "Lorem ipsum tekst tekst tekst.", img_url: ""};
-	reciepts[2] = {id: 3, title: "Reciept 3", description: "Lorem ipsum tekst tekst tekst.", img_url: ""};
-    reciepts[3] = {id: 4, title: "Reciept 4", description: "Podzielić oczyszczone skrzydełka na dwie części. Oprószyć pieprzem, solą oraz papryką. Obtoczyć skrzydełka w jajku, a następnie w mieszaninie mąki pszennej i kukurydzianej. Ułożyć na blaszcze wyłożonej papierem do pieczenia i piec ok. 20 min w piekarniku nagrzanym do 180°C. Przed podaniem usmażyć na głębokim tłuszczu do zarumienienia. Polać Sosem czosnkowym Tarsmak..", img_url: "http://businesstraveller.pl/wp-content/uploads/2013/09/potrawa-11-635x425.jpg"};
-	reciepts[4] = {id: 5, title: "Reciept 5", description: "Lorem ipsum tekst tekst tekst.", img_url: ""};
-    reciepts[5] = {id: 6, title: "Reciept 6", description: "Lorem ipsum tekst tekst tekst.", img_url: ""};
-    reciepts[6] = {id: 7, title: "Reciept 7", description: "Lorem ipsum tekst tekst tekst.", img_url: ""};
+    reciepts[0] = {id: 1, title: "Reciept 1", description: "Lorem ipsum tekst tekst tekst. Lorem ipsum tekst tekst tekst. Lorem ipsum tekst tekst tekst. Lorem ipsum tekst tekst tekst.", img_url: "", category_id: 2};
+	reciepts[1] = {id: 2, title: "Reciept 2", description: "Lorem ipsum tekst tekst tekst.", img_url: "", category_id: 5};
+	reciepts[2] = {id: 3, title: "Reciept 3", description: "Lorem ipsum tekst tekst tekst.", img_url: "", category_id: 4};
+    reciepts[3] = {id: 4, title: "Reciept 4", description: "Podzielić oczyszczone skrzydełka na dwie części. Oprószyć pieprzem, solą oraz papryką. Obtoczyć skrzydełka w jajku, a następnie w mieszaninie mąki pszennej i kukurydzianej. Ułożyć na blaszcze wyłożonej papierem do pieczenia i piec ok. 20 min w piekarniku nagrzanym do 180°C. Przed podaniem usmażyć na głębokim tłuszczu do zarumienienia. Polać Sosem czosnkowym Tarsmak..", img_url: "http://businesstraveller.pl/wp-content/uploads/2013/09/potrawa-11-635x425.jpg", category_id: 2};
+	reciepts[4] = {id: 5, title: "Reciept 5", description: "Lorem ipsum tekst tekst tekst.", img_url: "", category_id: 3};
+    reciepts[5] = {id: 6, title: "Reciept 6", description: "Lorem ipsum tekst tekst tekst.", img_url: "", category_id: 1};
+    reciepts[6] = {id: 7, title: "Reciept 7", description: "Lorem ipsum tekst tekst tekst.", img_url: "", category_id: 1};
     
 	var recieptsService = {};
 
 	recieptsService.getRecieptById = function(id)
-	{
-        return reciepts[functiontofindIndexByKeyValue(reciepts,"id",id)];
+	{ 
+        var reciept = reciepts[functiontofindIndexByKeyValue(reciepts,"id",id)];
+
+        return reciept;
     }
 
-	recieptsService.getByCategory = function(id)
+	recieptsService.getByCategoryId = function(id)
 	{
-		return reciepts;
+        var recieptsFromCategory = [];
+        
+        recieptsFromCategory = reciepts.filter(function (el) {
+            return el.category_id == id;
+        });
+
+//        recieptsFromCategory = reciepts.filter(category_id = id);
+//        for (i = 0; i < reciepts.length; i++){
+//            
+//        }
+
+        return recieptsFromCategory;
 	}
     
     
 	return recieptsService;
 };
-
-function functiontofindIndexByKeyValue(arraytosearch, key, valuetosearch) { 
-    for (var i = 0; i < arraytosearch.length; i++) {
-            if (arraytosearch[i][key] == valuetosearch) {
-                return i;
-            }
-        }
-    
-    return null;
-}
