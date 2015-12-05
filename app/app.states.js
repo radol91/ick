@@ -17,12 +17,21 @@ angular.module('kuchnia4U')
             url: '/',
             templateUrl: 'app/components/home/home.view.html',
             controller: 'homeController',
-            controllerAs: 'ctrl'
         })
         .state('reciept', {
             url: '/reciept/:id',
             templateUrl: 'app/components/reciept/reciept.view.html',
             controller: 'recieptController'
+        })
+        .state('search', {
+            url: '/search',
+            templateUrl: 'app/components/search/search.view.html',
+            controller: 'searchController',
+        })
+        .state('shopping_list', {
+            url: '/shopping_list',
+            templateUrl: 'app/components/shopping_list/shopping_list.view.html',
+            controller: 'shoppingListController',
         })
         .state('404', {
             url: '/404',
