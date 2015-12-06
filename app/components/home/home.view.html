@@ -10,9 +10,9 @@
             </ul>                 
         </nav>    
     </div>
-    <div class="col-md-9 column">
+    <div class="col-md-9 column clearfix">
         <div id="container" class="receipt_items_list content_area fill">
-            <div ng-repeat="reciept in reciepts" class="col-sm-12 col-md-6 col-lg-4">
+            <span ng-repeat="reciept in reciepts" class="col-sm-12 col-md-6 col-lg-4">
                 <div class="thumbnail reciept_list_element" ng-click="showReciept(reciept.id)">
                     <img src="{{reciept.img_url}}" alt=""/>
                     <div class="caption">
@@ -20,9 +20,9 @@
                         <p class="reciept_short_desc">{{reciept.description}}</p>
                     </div>
                 </div>
-            </div>
+            </span>
             <div class="btn_down_wrapper_center col-md-12">
-                <button ng-click="addNewReciept()" class="btn btn-default">Dodaj nowy przepis</button>
+                <button ng-click="addNewReciept()" class="btn btn-default"><span class="glyphicon glyphicon-plus icon-left"></span>Dodaj nowy przepis</button>
             </div>
         </div>
     </div>

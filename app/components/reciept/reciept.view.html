@@ -1,9 +1,26 @@
 <div class="row-fluid">
     <div id="container" class="content_area fill">
         <ul class="nav reciept_item_nav">
-            <li>Podziel się ze znajomymi</li>
-            <li>Dodaj do listy zakupów</li>
-            <li>Dodaj do ulubionych</li>
+            <li>      
+                <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-user icon-left"></span>Podziel się ze znajomymi
+                </button>
+            </li>
+            <li>      
+                <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-barcode icon-left"></span>Dodaj do listy zakupów
+                </button>
+            </li>
+            <li>      
+                <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-star-empty icon-left"></span>Dodaj do ulubionych
+                </button>
+            </li>
+            <li>      
+                <button type="button" class="btn btn-default">
+                    <span class="glyphicon glyphicon-remove icon-left"></span>Usuń przepis
+                </button>
+            </li>
         </ul>
         <div class="reciept_content">
             <img ng-show="reciept.img_url" src="{{reciept.img_url}}"/>
