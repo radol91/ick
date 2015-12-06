@@ -8,9 +8,9 @@
 </head>
 <title>Kuchnia4U</title>
 <body>
-    <div class="container">
-        <div class="row clearfix">
-            <div class="col-md-12 column">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
                 <nav class="navbar navbar-default" role="navigation">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> 
@@ -37,6 +37,7 @@
                     </nav>
                 </div>
             </div>
+        
             <!-- start dynamic content -->
             <div ui-view=""></div>
             <!-- end dynamic content -->
@@ -47,16 +48,21 @@
     <script src="/bower_components/bootstrap/dist/css/bootstrap.min.css"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/bower_components/acute-select/acute.select/acute.select.js"></script>
+    <script src="/bower_components/acute-select/acute.select/acute.select.css"></script>
 
     <script src="/app/app.config.js"></script>
     <script src="/app/app.states.js"></script>
 
     <script src="/app/services/category.service.js"></script>
     <script src="/app/services/reciepts.service.js"></script>
+    <script src="/app/services/ingredient.service.js"></script>
+    <script src="/app/services/unit.service.js"></script>
 
     <script src="/app/components/home/home.controller.js"></script>
     <script src="/app/components/reciept/reciept.controller.js"></script>
     <script src="/app/components/search/search.controller.js"></script>
+    <script src="/app/components/shopping_list/shopping_list.controller.js"></script>
     
     <script src="/assets/js/utils.js"></script>
     

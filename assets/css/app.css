@@ -4,14 +4,55 @@ body {
 	background-repeat: no-repeat;
 }
 
+label {
+    display:block;
+    color: white;
+    margin-top: 5px;
+}
+
 .column { 
     padding:  0px 0;
 }
 
-#container {
-    height: 85%;
-    background-size:contain;
+.column .left
+{
+    padding-right: 5px;
 }
+
+.padding-top
+{
+    padding-top: 20px;
+}
+
+.icon-left
+{
+    padding-right: 10px; 
+}
+
+.btn-ingredient
+{
+    background-color: dimgrey;
+}
+
+div.content_area
+{
+    padding-top: 10px;
+   	background: rgba(128, 89, 42, .90); 
+}
+
+#container
+{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#container.content_area.fill {
+    min-height: 85%;
+    width: 100%;
+}
+
 /*---End_Global---*/
 
 /*---Start_Navbar---*/
@@ -100,15 +141,12 @@ ul.nav, ul.navbar-nav
 }
 
 /*---End_Sidebar---*/
-.reciept_item
-{
-   	background: rgba(128, 89, 42, .90); 
-}
-
 ul.reciept_item_nav
 {
     text-align: center;
     padding-top: 10px;
+    color: whitesmoke;
+    font-size: 18px;
 }
 
 ul.reciept_item_nav li
@@ -121,7 +159,6 @@ ul.reciept_item_nav li
 .receipt_items_list
 {
 	padding: 10px;
-	background: rgba(128, 89, 42, .75);
 }
 
 div.reciept_list_element:hover
@@ -143,7 +180,6 @@ p.reciept_short_desc
     -webkit-box-orient: vertical;
 }
 
-
 .reciept_content
 {
     padding: 20px;
@@ -159,6 +195,11 @@ p.reciept_short_desc
     padding-bottom: 10px;
 }
 
+.reciept_desc_input
+{
+    height: 200px;
+}
+
 .reciept_content h3
 {
     color: burlywood;
@@ -170,4 +211,90 @@ p.reciept_short_desc
 {
     color: white;
     font-size: 21px;
+}
+
+.btn_down_wrapper_center
+{
+    position: absolute;
+    text-align: center;
+    padding-top: 20px;
+    bottom: 10px;  
+}
+
+div.multicolumn_span span
+{
+    padding-left: 0px;
+    padding-right: 5px;
+}
+
+/*Start-search*/
+.search_list_ingredient
+{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.search_list_ingredient > p
+{
+   padding-left: 10px;
+   padding-right: 10px;
+}
+
+.search_list_ingredient > p > button
+{
+   margin-left: 10px;
+   margin-bottom: 10px;
+}
+/*End-search*/
+
+/*Start-shopping-list*/
+h3.shipping_list_header
+{
+    font-size: 22px;
+    color: aliceblue;
+}
+
+div.shopping_list > ul > li > span
+{
+    padding-top: 10px;
+}
+
+
+div.shopping_list > ul > li
+{
+    display: inline;
+    font-size: 24px;  
+    vertical-align: middle;
+    padding-top: 10px;
+}
+
+div.shopping_list > ul > li > span > label
+{
+    padding-left: 20px;
+    display: inline;
+}
+
+div.shopping_list > ul
+{
+    list-style: none;
+}
+/*End-shopping-list*/
+
+/* Large desktop */
+@media (min-width: 1200px) { 
+
+}
+     
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) { 
+
+}
+     
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+} 
+     
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
 }

@@ -23,6 +23,11 @@ angular.module('kuchnia4U')
             templateUrl: 'app/components/reciept/reciept.view.html',
             controller: 'recieptController'
         })
+        .state('reciept/new', {
+            url: '/reciept/new/:category_id',
+            templateUrl: 'app/components/reciept/reciept.new.view.html',
+            controller: 'recieptNewController'
+        })
         .state('search', {
             url: '/search',
             templateUrl: 'app/components/search/search.view.html',

@@ -1,10 +1,25 @@
-<div ng-init="init()" class="row clearfix">
-    <div id="container" class="col-md-3 column nav-sidebar">
-        Szukarka 
+<div class="row-fluid">
+    <div class="nav-sidebar col-md-5 column">
+        <div class="col-md-12 col-sm-12 multicolumn_span">
+                    <label class="padding-top" for="search_field">Wpisz nazwę lub wybierz składniki:</label>
+            <span class="col-md-10 col-sm-10">
+                <textarea class="form-control" id="search_field" rows="1"></textarea>
+            </span>
+            <span class="col-md-2 col-sm-2">
+                <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-search icon-left"></span>Szukaj</button>
+            </span>
+        </div>
+        <span class="search_list_ingredient">
+            <p>
+                <button ng-repeat="ingredient in ingredients" class="btn btn-ingredient">{{ingredient.name}}</button>
+            </p>
+        </span>
     </div>
-    <div class="col-md-9 column">
-        <div id="container" class="receipt_items_list">
-            <div class="row">
+    <div class="col-md-7 column">
+        <div id="container" class="content_area fill">
+<!--            <div class="row">-->
+                Wyniki wyszukiwania
 <!--
                 <div ng-repeat="reciept in reciepts" class="col-sm-4 col-lg-4 col-md-4">
                     <div class="thumbnail reciept_list_element" ng-click="showReciept(reciept.id)">
@@ -16,7 +31,7 @@
                     </div>
                 </div>
 -->
-            </div>
+<!--            </div>-->
         </div>
     </div>
 </div>
