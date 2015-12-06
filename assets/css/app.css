@@ -223,6 +223,18 @@ div.multicolumn_span span
 }
 
 /*Start-search*/
+textarea.resize_vertical
+{ 
+    resize: vertical;
+    overflow: auto;
+}
+
+.item_label_toggled
+{
+    text-decoration: line-through;
+    color: aliceblue;
+}
+
 .search_list_ingredient
 {
     padding-left: 15px;

@@ -1,9 +1,9 @@
 <div class="row-fluid">
     <div class="nav-sidebar col-md-5 column">
         <div class="col-md-12 col-sm-12 multicolumn_span">
-                    <label class="padding-top" for="search_field">Wpisz nazwę lub wybierz składniki:</label>
+            <label class="padding-top" for="search_field">Wpisz nazwę lub wybierz składniki:</label>
             <span class="col-md-10 col-sm-10">
-                <textarea class="form-control" id="search_field" rows="1"></textarea>
+                <textarea class="form-control resize_vertical" id="search_field" rows="2"></textarea>
             </span>
             <span class="col-md-2 col-sm-2">
                 <button type="button" class="btn btn-default">
@@ -12,7 +12,7 @@
         </div>
         <span class="search_list_ingredient">
             <p>
-                <button ng-repeat="ingredient in ingredients" class="btn btn-ingredient">{{ingredient.name}}</button>
+                <button ng-click="appendSearchIngredient(ingredient)" ng-repeat="ingredient in ingredients" class="btn btn-ingredient">     {{ingredient.name}}</button>
             </p>
         </span>
     </div>
