@@ -8,7 +8,7 @@ function recieptController($scope, $http, $window, $q, $state, categoryService, 
     $scope.reciept = recieptsService.getRecieptById($state.params.id); 
 }
 
-angular.module('kuchnia4U').controller('recieptNewController', recieptNewController);
+app.controller('recieptNewController', recieptNewController);
 
 recieptNewController.$inject = ["$scope", "$http", "$window", "$q", "$state", "categoryService", "recieptsService", "ingredientService", "unitService"];
 

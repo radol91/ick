@@ -6,8 +6,13 @@ homeController.$inject = ["$scope", "$window", "$state", "categoryService", "rec
 
 function homeController($scope, $window, $state, categoryService, recieptsService) {
     
-    $scope.getRecieptsByCategory = function(id) {
-        $scope.reciepts = recieptsService.getByCategoryId(id);
+    $scope.getRecieptsByCategory = function(category_id) {
+        console.log(category_id);
+        $scope.reciepts = recieptsService.getByCategoryId(category_id);
+        
+        $scope.reciepts.$promise.then(function (result) {
+             $scope.reciepts = result;
+        });
     };
 
     $scope.showReciept = function(id) {
