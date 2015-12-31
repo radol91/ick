@@ -3,8 +3,7 @@
  * more info on UI-Router states can be found at
  * https://github.com/angular-ui/ui-router/wiki
  */
-angular.module('kuchnia4U')
-    .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
     // any unknown URLS go to 404
     $urlRouterProvider.otherwise('/404');

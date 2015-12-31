@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('kuchnia4U').controller('homeController', homeController);
+app.controller('homeController', homeController);
 
-homeController.$inject = ["$scope", "$http", "$window", "$q", "$state", "categoryService", "recieptsService"];
+homeController.$inject = ["$scope", "$window", "$state", "categoryService", "recieptsService"];
 
-function homeController($scope, $http, $window, $q, $state, categoryService, recieptsService) {
+function homeController($scope, $window, $state, categoryService, recieptsService) {
     
     $scope.getRecieptsByCategory = function(id) {
         $scope.reciepts = recieptsService.getByCategoryId(id);
@@ -18,7 +18,7 @@ function homeController($scope, $http, $window, $q, $state, categoryService, rec
         $state.go('reciept/new', {category_id: category_id});
     }
     
-    $scope.init = function() {        
+    $scope.init = function() {    
         $scope.categories = categoryService.getCategories(); 
         $scope.getRecieptsByCategory(1);    
     };

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('kuchnia4U').controller('shoppingListController',shoppingListController);
+app.controller('shoppingListController',shoppingListController);
 
 shoppingListController.$inject = ["$scope", "$http", "$window", "$q", "$state"];
 

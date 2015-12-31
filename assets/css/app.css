@@ -1,7 +1,8 @@
 /*---Start_Global---*/
 body {
 	background-image: url("../img/bg.jpg");
-	background-repeat: no-repeat;
+	background-repeat: repeat;
+    background-size: 120%;
 }
 
 label {

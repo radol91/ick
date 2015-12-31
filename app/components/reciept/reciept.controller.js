@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('kuchnia4U').controller('recieptController', recieptController);
+app.controller('recieptController', recieptController);
 
 recieptController.$inject = ["$scope", "$http", "$window", "$q", "$state", "categoryService", "recieptsService"];
 
