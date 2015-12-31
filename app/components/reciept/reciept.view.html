@@ -22,10 +22,22 @@
                 </button>
             </li>
         </ul>
-        <div class="reciept_content">
-            <img ng-show="reciept.img_url" src="{{reciept.img_url}}"/>
-            <h3>{{reciept.title}}</h3>
-            <p>{{reciept.description}}</p>
+        <div class="reciept_container">
+            <div class="reciept_content">
+                <img ng-show="reciept.img_url" src="{{reciept.img_url}}"/>
+                <h3>{{reciept.title}}</h3>
+                <p>{{reciept.description}}</p>
+            </div>
+            <div class="bottom-section">
+                <div class="bottom-aligner"></div><div class=bottom-content>
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-chevron-left icon-left"></span>Wstecz
+                    </button>
+                    <button class="btn btn-default right" type="button" class="btn btn-default">
+                        Dalej<span class="glyphicon glyphicon-chevron-right icon-right"></span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

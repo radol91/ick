@@ -18,7 +18,7 @@ function homeController($scope, $http, $window, $q, $state, categoryService, rec
         $state.go('reciept/new', {category_id: category_id});
     }
     
-    $scope.init = function() {
+    $scope.init = function() {        
         $scope.categories = categoryService.getCategories(); 
         $scope.getRecieptsByCategory(1);    
     };

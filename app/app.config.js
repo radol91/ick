@@ -10,5 +10,5 @@ angular.module('kuchnia4U', [
     {
 	    DebugMode: true,
 	    StepCounter: 0,
-	    APIHost: 'http://localhost:12017'
+	    APIHost: 'http://kuchnia4you.azurewebsites.net/api/'
 	}); 

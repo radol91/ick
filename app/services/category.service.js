@@ -5,7 +5,7 @@ angular.module('kuchnia4U.categoryService', []).factory('categoryService', categ
 categoryService.$inject = ['$http', '$q'];
 
 function categoryService($http, $q) {
-    var categories = [];
+    var categories = [];    
     
     categories[0] = {id: 1, name: "Ciasta i desery"};
     categories[1] = {id: 2, name: "Potrawy z jaj"};
@@ -19,7 +19,7 @@ function categoryService($http, $q) {
 
 	categoryService.getCategories = function()
 	{
-		return categories;
+        return categories;
 	}
 
 	return categoryService;

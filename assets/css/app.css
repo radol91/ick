@@ -29,6 +29,11 @@ label {
     padding-right: 10px; 
 }
 
+.icon-right
+{
+    padding-left: 10px; 
+}
+
 .btn-ingredient
 {
     background-color: dimgrey;
@@ -46,6 +51,14 @@ div.content_area
     padding-right: 15px;
     padding-top: 15px;
     padding-bottom: 15px;
+/*    min-height: 85%;*/
+    display: inline-block;
+    width: 100%;
+}
+
+button.btn.btn-default.right
+{
+    float: right;
 }
 
 div.navbar-menu-btn
@@ -56,9 +69,7 @@ div.navbar-menu-btn
 }
 
 #container.content_area.fill {
-    min-height: 85%;
-    display: inline-block;
-    width: 100%;
+
 }
 
 /*---End_Global---*/
@@ -179,6 +190,17 @@ p.reciept_short_desc
     padding: 20px;
 }
 
+
+.bottom-content {
+    clear: both;
+}
+
+.bottom-aligner {
+    display: inline-block;
+    min-height: 50px;
+    vertical-align: bottom; 
+}
+
 .reciept_content img
 {
     float: left;
@@ -246,6 +268,7 @@ textarea.resize_vertical
    padding-left: 10px;
    padding-right: 10px;
 }
+
 
 .search_list_ingredient > p > button
 {
