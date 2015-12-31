@@ -52,7 +52,6 @@ div.content_area
     padding-right: 15px;
     padding-top: 15px;
     padding-bottom: 15px;
-/*    min-height: 85%;*/
     display: inline-block;
     width: 100%;
 }
@@ -69,21 +68,18 @@ div.navbar-menu-btn
     font-size: 22px;
 }
 
-#container.content_area.fill {
-
-}
-
 /*---End_Global---*/
 
 /*---Start_Navbar---*/
 .navbar-default {
 	background: rgba(54, 25, 25, .8);
 	margin-bottom: 5px;
+    min-height: 63px;
 }
 
-.navbar-default .navbar-nav li {
-	padding-right: 25px;
-	padding-left: 25px;
+.navbar-default .navbar-nav a {
+	padding-right: 30px;
+	padding-left: 30px;
 }
 
 .navbar-default .navbar-nav > li:hover {
@@ -94,8 +90,23 @@ div.navbar-menu-btn
 	transition: all 0.08s linear;
 }
 
+
+
+.nav > li > a:hover, .nav > li > a:focus{
+    background-color: #52000C;
+}
+
+
 .navbar-default .navbar-nav > li > a:hover {
 	color:#fff;
+}
+
+.navbar-default .navbar-nav > li:hover {
+	background-color: #52000C;
+}
+
+.navbar-default .navbar-nav > li > a:focus {
+	background-color: #52000C;
 }
 
 .navbar-default .navbar-nav > li > a:focus {
@@ -136,6 +147,11 @@ div.navbar-menu-btn
 }
 .nav-sidebar .active a:hover {
 	background-color: #428bca;   
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus
+{
+    background-color: 
 }
 
 .nav-sidebar .text-overflow a,
