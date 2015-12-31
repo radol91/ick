@@ -17,7 +17,7 @@ label {
 
 .column .left
 {
-    padding-right: 5px;
+    //padding-right: 5px;
 }
 
 .padding-top
@@ -74,13 +74,15 @@ div.navbar-menu-btn
 .navbar-default {
 	background: rgba(54, 25, 25, .8);
 	margin-bottom: 5px;
-    min-height: 63px;
+    min-height: 60px;
 }
 
 .navbar-default .navbar-nav a {
 	padding-right: 30px;
 	padding-left: 30px;
+    font-size: 20px;
 }
+
 
 .navbar-default .navbar-nav > li:hover {
 	background: rgba(54, 25, 25, .8);
@@ -90,10 +92,22 @@ div.navbar-menu-btn
 	transition: all 0.08s linear;
 }
 
-
+.navbar-default .navbar-nav > li > a {
+    color: #FFF;
+}
 
 .nav > li > a:hover, .nav > li > a:focus{
     background-color: #52000C;
+}
+
+.container
+{
+    width: 100%;
+}
+
+.navbar-brand {
+    margin-top: 5px;
+    font-size: 24px;
 }
 
 
@@ -124,8 +138,7 @@ div.navbar-menu-btn
 /*---End_Navbar---*/
 
 /*---Start_Sidebar---*/
-.nav-sidebar { 
-	padding: 3px 0; 
+.nav-sidebar {  
 	background: rgba(54, 25, 25, .75);
 	font-size: 17px;
 	color: #fff;
