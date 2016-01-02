@@ -22,9 +22,29 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             templateUrl: 'app/components/reciept/reciept.view.html',
             controller: 'recieptController'
         })
+        .state('reciept/steps', {
+            url: '/reciept/steps/:id',
+            templateUrl: 'app/components/reciept/reciept.steps.view.html',
+            controller: 'recieptController'
+        })
         .state('reciept/new', {
             url: '/reciept/new/:category_id',
             templateUrl: 'app/components/reciept/reciept.new.view.html',
+            controller: 'recieptNewController'
+        })
+        .state('reciept/edit', {
+            url: '/reciept/edit/:recipe_id',
+            templateUrl: 'app/components/reciept/reciept.new.view.html',
+            controller: 'recieptNewController'
+        })
+        .state('reciept/new/steps', {
+            url: '/reciept/new/steps/:recipe_id',
+            templateUrl: 'app/components/reciept/reciept.new.steps.view.html',
+            controller: 'recieptNewController'
+        })
+        .state('reciept/new/ingredients', {
+            url: '/reciept/new/ingredients/:recipe_id',
+            templateUrl: 'app/components/reciept/reciept.new.ingredients.view.html',
             controller: 'recieptNewController'
         })
         .state('search', {
@@ -36,6 +56,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             url: '/shopping_list',
             templateUrl: 'app/components/shopping_list/shopping_list.view.html',
             controller: 'shoppingListController',
+        })
+        .state('favourites', {
+            url: '/favourites',
+            templateUrl: 'app/components/favourites/favourites.view.html',
+            controller: 'favouritesController',
         })
         .state('404', {
             url: '/404',

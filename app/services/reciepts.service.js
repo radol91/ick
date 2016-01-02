@@ -20,32 +20,30 @@ function recieptsService($http, $q, $rootScope, recipeRepository) {
 
 	recieptsService.getRecieptById = function(id)
 	{ 
-        var reciept =  recipeRepository.show({id : id}); 
+        var recipe =  recipeRepository.show({id : id}); 
+        recieptsService.setRecipeImageUrl(recipe);
         
         //reciepts[functiontofindIndexByKeyValue(reciepts,"id",id)];
 
-        return reciept;
+        return recipe;
     }
 
 	recieptsService.getByCategoryId = function(category_id)
 	{
         var recieptsFromCategory = recipeRepository.byCategoryId({categoryId : category_id});
         
+        for(var i =0; i < recieptsFromCategory.length; i++){
+            recieptsService.setRecipeImageUrl(recieptsFromCategory[i])
+        }
+        
         return recieptsFromCategory; 
-        
-//        console.log(recieptsFromCategory);
-//        recieptsFromCategory = reciepts.filter(function (el) {
-//            return el.category_id == id;
-//        });
-
-//        recieptsFromCategory = reciepts.filter(category_id = id);
-//        for (i = 0; i < reciepts.length; i++){
-//            
-//        }
-        
-//        return recieptsFromCategory;
-	}
+    }
     
-    
+    recieptsService.setRecipeImageUrl = function(element){
+        if (element.ImageUrl == undefined){
+            element.ImageUrl = "http://placehold.it/350x150";
+        }
+    }
+        
 	return recieptsService;
 };

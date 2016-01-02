@@ -2,34 +2,36 @@
     <div id="container" class="content_area col-md-12 col-sm-12 fill">
         <h3 class="shipping_list_header">Lista zakupów</h3> 
         
-        <div class="col-md-6 col-sm-6 padding-top shopping_list">
+        <div class="col-lg-6 col-md-12 col-sm-12 padding-top shopping_list">
             <ul>
-                <li ng-repeat="item in items">
-                    <span class="col-md-12">
-                        <button ng-click="toggleItem(item)" type="button" class="btn btn-default">
+                <li class="col-12-lg col-12-md col-12-sm col-12-xs" ng-repeat="item in items">
+                    <span class="col-lg-12 col-md-12 col-sm-12">
+                        <button ng-click="toggleItem(item)" type="button" class="btn btn-default col-2-sm">
                             <span class="glyphicon glyphicon-ok"></span>
                         </button>
-                        <button ng-click="removeItem(item)" type="button" class="btn btn-default">
+                        <button ng-click="removeItem(item)" type="button" class="btn btn-default col-10-sm">
                             <span class="glyphicon glyphicon-remove"></span>
                         </button>    
                         <label id="item_label_{{item.id}}">{{item.desc}}</label>
                     </span>
                 </li>
+                <div class="col-lg-12 col-md-12 col-sm-12" style="padding-top: 20px;">
+                    <span class="col-md-7 col-sm-7">
+                        <textarea class="form-control resize_vertical" id="shopping_list_add" rows="1"/>
+                    </span>
+                    <span  class="col-md-4 col-sm-4">
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-plus icon-left"></span>Dodaj element
+                        </button>
+                    </span>
+                </div>
             </ul>
         </div>
-        <div class="col-md-6 col-sm-6">
-                <span class="col-md-7 col-sm-7">
-                  <textarea class="form-control resize_vertical" id="shopping_list_add" rows="1"/>
-                </span>
-                <span  class="col-md-4 col-sm-4">
-                    <button type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-plus icon-left"></span>Dodaj element
-                    </button>
-                </span>
-        </div>
-        
-        <div class="row-fluid btn_down_wrapper_center col-md-12 col-sm-12" style="position: absolute;">
-            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-remove icon-left"></span>Wyczyść listę</button>
+    
+        <div class="bottom-content col-md-12 center">
+            <button class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-remove icon-left"></span>Wyczyść listę
+            </button>
         </div>
     </div>
 </div>

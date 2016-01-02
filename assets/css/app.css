@@ -61,6 +61,11 @@ button.btn.btn-default.right
     float: right;
 }
 
+button.add-button {
+    height: 34px;
+}
+
+
 div.navbar-menu-btn
 {
     position: absolute;
@@ -223,12 +228,13 @@ p.reciept_short_desc
 
 .bottom-content {
     clear: both;
+        padding-top: 20px;
 }
 
 .bottom-aligner {
     display: inline-block;
     min-height: 50px;
-    vertical-align: bottom; 
+    vertical-align: bottom;
 }
 
 .reciept_content img
@@ -260,18 +266,8 @@ p.reciept_short_desc
     font-size: 21px;
 }
 
-.btn_down_wrapper_center
-{
-/*    position: absolute;*/
+.center{
     text-align: center;
-    padding-top: 20px;
-    bottom: 10px;  
-}
-
-div.multicolumn_span span
-{
-    padding-left: 0px;
-    padding-right: 5px;
 }
 
 /*Start-search*/
@@ -337,6 +333,11 @@ div.shopping_list > ul > li > span > label
 div.shopping_list > ul
 {
     list-style: none;
+}
+
+.required{
+    color: red;
+    font-size: 16px;
 }
 /*End-shopping-list*/
 
