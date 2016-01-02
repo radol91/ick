@@ -28,7 +28,7 @@ function homeController($rootScope, $scope, $window, $state, categoryService, re
         categoryService.getCategories().$promise.then(
         function(data) {
             $scope.categories = data;
-            $scope.getRecieptsByCategory(1);  
+            $scope.getRecieptsByCategory($rootScope.category_id);  
         }); 
     };
 }

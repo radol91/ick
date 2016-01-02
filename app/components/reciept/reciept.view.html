@@ -11,8 +11,8 @@
                     <span class="glyphicon glyphicon-barcode icon-left"></span>Dodaj do listy zakupów
                 </button>
             </li>
-            <li>      
-                <button type="button" class="btn btn-default">
+            <li ng-controller="favouritesController">      
+                <button ng-click="addToFavourites(reciept.Id)" type="button" class="btn btn-default">
                     <span class="glyphicon glyphicon-star-empty icon-left"></span>Dodaj do ulubionych
                 </button>
             </li>

@@ -1,8 +1,9 @@
 <div ng-init="init()" class="row-fluid column">
     <div class="col-md-3 column left">
         <nav id="container" class="nav-sidebar">
-            <ul class="nav" ng-controller="homeController">                  
-                <li ng-click="getRecieptsByCategory(category.Id)" ng-repeat="category in categories">
+            <ul class="nav">                  
+                <li ng-repeat="category in categories"
+                    ng-click="getRecieptsByCategory(category.Id)">
                     <a href="javascript:;">{{category.Name}}</a>
                 </li>
                 <li class="nav-divider"></li>

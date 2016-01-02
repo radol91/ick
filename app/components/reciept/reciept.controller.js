@@ -27,7 +27,6 @@ categoryService, recieptsService, ingredientService, unitService) {
         categoryService.getCategories().$promise.then(
         function(data) {
             $scope.categories = data;
-            console.log($rootScope.currentCategoryId);
             $scope.newCategory =  $scope.categories[
                 functiontofindIndexByKeyValue($scope.categories,"Id",$rootScope.currentCategoryId)];                   
         }); 
