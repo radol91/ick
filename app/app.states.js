@@ -28,7 +28,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             controller: 'recieptController'
         })
         .state('reciept/new', {
-            url: '/reciept/new/:category_id',
+            url: '/reciept/new/',
             templateUrl: 'app/components/reciept/reciept.new.view.html',
             controller: 'recieptNewController'
         })

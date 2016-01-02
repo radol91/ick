@@ -2,11 +2,12 @@
 
 app.controller('homeController', homeController);
 
-homeController.$inject = ["$scope", "$window", "$state", "categoryService", "recieptsService"];
+homeController.$inject = ["$rootScope", "$scope", "$window", "$state", "categoryService", "recieptsService"];
 
-function homeController($scope, $window, $state, categoryService, recieptsService) {
+function homeController($rootScope, $scope, $window, $state, categoryService, recieptsService) {
     
     $scope.getRecieptsByCategory = function(category_id) {
+        $rootScope.currentCategoryId = category_id;
         $scope.reciepts = recieptsService.getByCategoryId(category_id);
     };
 
@@ -15,7 +16,8 @@ function homeController($scope, $window, $state, categoryService, recieptsServic
     };
     
     $scope.addNewReciept = function(category_id){
-        $state.go('reciept/new', {category_id: category_id});
+        $rootScope.category_id = category_id;
+        $state.go('reciept/new');
     }
     
     $scope.showFavourites = function(){
@@ -23,7 +25,10 @@ function homeController($scope, $window, $state, categoryService, recieptsServic
     }
     
     $scope.init = function() {    
-        $scope.categories = categoryService.getCategories(); 
-        $scope.getRecieptsByCategory(1);    
+        categoryService.getCategories().$promise.then(
+        function(data) {
+            $scope.categories = data;
+            $scope.getRecieptsByCategory(1);  
+        }); 
     };
 }

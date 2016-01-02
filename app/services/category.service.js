@@ -8,9 +8,12 @@ function categoryService($rootScope, categoryRepository) {
     var categories = [];    
 	var categoryService = {};
 
-	categoryService.getCategories = function()
-	{
+	categoryService.getCategories = function(){
         return categoryRepository.query();
+	}
+    
+    categoryService.getCategory = function(category_id){
+        return categoryRepository.show({id : category_id});
 	}
 
 	return categoryService;
