@@ -22,21 +22,32 @@ recieptNewController.$inject = ["$rootScope","$scope", "$http", "$window", "$q",
 
 function recieptNewController($rootScope, $scope, $http, $window, $q, $state, 
 categoryService, recieptsService, ingredientService, unitService) {
-    
+ 
     $scope.init = function(){
         categoryService.getCategories().$promise.then(
         function(data) {
             $scope.categories = data;
-            $scope.newCategory =  $scope.categories[
+            $scope.newCategory = $scope.categories[
                 functiontofindIndexByKeyValue($scope.categories,"Id",$rootScope.currentCategoryId)];                   
         }); 
     }
-//    $scope.ingredients = ingredientService.getIngredients();
-//    $scope.units = unitService.getUnits();
     
-
-//    $scope.new_ingredient = $scope.ingredients[0];
-//    $scope.new_ingredient_unit = $scope.units[0];
+    $scope.updateRecipe = function(recipe){
+        var recipe = recipe;
+        
+        recipe.Categories = [];
+        recipe.Categories.push({Id: 1});
+        
+        recipe.Steps = [];
+        recipe.Ingredients = [];
+        
+        recipe.ImageUrl = $rootScope.defaultImage;
+        
+        recieptsService.createItem(recipe, function (newRecipe) {
+            console.log(newRecipe.Id);
+            $state.go('reciept', { id: newRecipe.Id });
+        });
+    }
     
     $scope.editRecipe = function(recipe_id){
         $state.go('reciept/edit', {recipe_id : recipe_id});    

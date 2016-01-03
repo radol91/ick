@@ -33,7 +33,7 @@ function favouritesController($rootScope, $cookies, $scope, $window, $state, cat
     }
     
     $scope.getRecieptsByCategory = function(category_id) {
-        $rootScope.category_id = category_id;
+        $rootScope.currentCategoryId = category_id;
         $state.go('home');
 //        $scope.reciepts = recieptsService.getByCategoryId(category_id);
     };

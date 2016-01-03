@@ -15,8 +15,7 @@ function homeController($rootScope, $scope, $window, $state, categoryService, re
         $state.go('reciept', {id: id});
     };
     
-    $scope.addNewReciept = function(category_id){
-        $rootScope.category_id = category_id;
+    $scope.addNewReciept = function(){
         $state.go('reciept/new');
     }
     
@@ -28,7 +27,9 @@ function homeController($rootScope, $scope, $window, $state, categoryService, re
         categoryService.getCategories().$promise.then(
         function(data) {
             $scope.categories = data;
-            $scope.getRecieptsByCategory($rootScope.category_id);  
+            $scope.category = $scope.categories[
+                functiontofindIndexByKeyValue($scope.categories,"Id",$rootScope.currentCategoryId)];
+            $scope.getRecieptsByCategory($rootScope.currentCategoryId);  
         }); 
     };
 }

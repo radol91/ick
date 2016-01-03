@@ -17,19 +17,29 @@ function recieptsService($http, $q, $rootScope, recipeRepository) {
 //    reciepts[6] = {id: 7, title: "Reciept 7", description: "Lorem ipsum tekst tekst tekst.", img_url: "http://www.podwawrzynem.pl/img/galeria/galeria_potrawy/potrawy18.jpg", category_id: 1};
 //    
 	var recieptsService = {};
+    
+   recieptsService.createItem = function (recipe, successCallback, errorCallback){
+        recipeRepository.create(recipe,
+            function success(item) {
+                if (successCallback != undefined){
+                    console.log('callback after create');
+                    console.log(item);
+                    successCallback(item);
+                }
+            }, 
+            function error(item){
+                //TODO
+            });
+    }
 
-	recieptsService.getRecieptById = function(id)
-	{ 
-        var recipe =  recipeRepository.show({id : id}); 
-        recieptsService.setRecipeImageUrl(recipe);
-        
-        //reciepts[functiontofindIndexByKeyValue(reciepts,"id",id)];
+	recieptsService.getRecieptById = function(id){ 
+        var recipe = recipeRepository.show({id : id}); 
 
+        console.log(recipe);
         return recipe;
     }
 
-	recieptsService.getByCategoryId = function(category_id)
-	{
+	recieptsService.getByCategoryId = function(category_id){
         var recieptsFromCategory = recipeRepository.byCategoryId({categoryId : category_id});
         
         for(var i =0; i < recieptsFromCategory.length; i++){
@@ -38,12 +48,6 @@ function recieptsService($http, $q, $rootScope, recipeRepository) {
         
         return recieptsFromCategory; 
     }
-    
-    recieptsService.setRecipeImageUrl = function(element){
-        if (element.ImageUrl == undefined){
-            element.ImageUrl = "http://placehold.it/350x150";
-        }
-    }
-        
+
 	return recieptsService;
 };

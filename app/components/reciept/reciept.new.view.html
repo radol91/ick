@@ -3,17 +3,17 @@
         <div class="col-sm-12 col-md-6 column">
             <div class="col-md-12">
                 <label for="reciept_title"><span class="required">*</span>Nazwa przepisu:</label>
-                  <input class="form-control" id="reciept_title" type="text" name="reciept[title]"/>
+                  <input class="form-control" id="reciept_title" type="text" ng-model="recipe.Title"/>
             </div>
             <div class="col-md-12">
                   <label for="reciept_category"><span class="required">*</span>Kategoria:</label>
                   <select ng-options="category.Name for category in categories track by category.Id" 
-                          ng-model="newCategory" class="form-control" name="reciept[new_category_id]"/>
+                          ng-model="newCategory" class="form-control"/>
 
             </div>
             <div class="col-md-12">
                   <label for="desc">Opis:</label>
-                  <textarea class="form-control reciept_desc_input" id="desc" rows="10" name="reciept[desc]"></textarea>
+                  <textarea class="form-control reciept_desc_input" ng-model="recipe.Description" rows="10"></textarea>
             </div>
 
             <div class="col-md-12">
@@ -26,7 +26,7 @@
                         ng-click="newRecipeIngredients(reciept.Id)">
                     Dodaj składniki<span class="glyphicon glyphicon-chevron-right icon-right"></span>
                 </button>
-                <button class="btn btn-default right">
+                <button class="btn btn-default right" ng-click="updateRecipe(recipe)">
                     <span class="glyphicon glyphicon-floppy-disk icon-left"></span>Zapisz przepis
                 </button>
         </div>
