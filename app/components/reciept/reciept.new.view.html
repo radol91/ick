@@ -8,7 +8,7 @@
             <div class="col-md-12">
                   <label for="reciept_category"><span class="required">*</span>Kategoria:</label>
                   <select ng-options="category.Name for category in categories track by category.Id" 
-                          ng-model="newCategory" class="form-control"/>
+                          ng-model="recipe.Categories[0]" class="form-control"/>
 
             </div>
             <div class="col-md-12">
@@ -18,7 +18,7 @@
 
             <div class="col-md-12">
                   <label for="reciept_image">Zdjęcie:</label>
-                  <button id="reciept_image" name="reciept[image]">Dodaj zdjęcie</button>
+                  <button id="reciept_image">Dodaj zdjęcie</button>
             </div>
         </div>
         <div class="bottom-content col-md-12">

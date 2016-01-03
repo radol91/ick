@@ -1,10 +1,7 @@
 'use strict';
 
-angular.module('kuchnia4U.unitService', []).factory('unitService', unitService);
-
-unitService.$inject = ['$http', '$q'];
-
-function unitService($http, $q) {
+app.factory('unitService', ['$http', '$q',
+function($http, $q) {
     var units = [];
     
     units[0] = {id: 1, name: "g"};
@@ -24,4 +21,4 @@ function unitService($http, $q) {
 	}
 
 	return unitService;
-};
+}]);

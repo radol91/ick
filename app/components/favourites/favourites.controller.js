@@ -1,10 +1,7 @@
 'use strict';
 
-app.controller('favouritesController', favouritesController);
-
-favouritesController.$inject = ["$rootScope","$cookies","$scope", "$window", "$state", "categoryService", "recieptsService"];
-
-function favouritesController($rootScope, $cookies, $scope, $window, $state, categoryService, recieptsService) {
+app.controller('favouritesController', ["$rootScope","$cookies","$scope", "$window", "$state", "categoryService", "recieptsService",
+function($rootScope, $cookies, $scope, $window, $state, categoryService, recieptsService) {
     
     $scope.init = function() { 
         categoryService.getCategories().$promise.then(
@@ -35,6 +32,5 @@ function favouritesController($rootScope, $cookies, $scope, $window, $state, cat
     $scope.getRecieptsByCategory = function(category_id) {
         $rootScope.currentCategoryId = category_id;
         $state.go('home');
-//        $scope.reciepts = recieptsService.getByCategoryId(category_id);
     };
-}
+}]);

@@ -1,10 +1,7 @@
 'use strict';
 
-angular.module('kuchnia4U.ingredientService', []).factory('ingredientService', ingredientService);
-
-ingredientService.$inject = ['$http', '$q'];
-
-function ingredientService($http, $q) {
+app.factory('ingredientService', ['$http', '$q',
+function($http, $q) {
     var ingredients = [];
     
     ingredients[0] = {id: 1, name: "mleko"};
@@ -24,4 +21,4 @@ function ingredientService($http, $q) {
 	}
 
 	return ingredientService;
-};
+}]);

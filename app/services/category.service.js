@@ -1,11 +1,7 @@
 'use strict';
 
-angular.module('kuchnia4U.categoryService', []).factory('categoryService', categoryService);
-
-categoryService.$inject = ['$rootScope', "categoryRepository"];
-
-function categoryService($rootScope, categoryRepository) {
-    var categories = [];    
+app.factory('categoryService', ['$rootScope', "categoryRepository",
+function ($rootScope, categoryRepository) { 
 	var categoryService = {};
 
 	categoryService.getCategories = function(){
@@ -17,4 +13,4 @@ function categoryService($rootScope, categoryRepository) {
 	}
 
 	return categoryService;
-};
+}]);

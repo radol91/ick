@@ -1,10 +1,7 @@
 'use strict';
 
-app.controller('homeController', homeController);
-
-homeController.$inject = ["$rootScope", "$scope", "$window", "$state", "categoryService", "recieptsService"];
-
-function homeController($rootScope, $scope, $window, $state, categoryService, recieptsService) {
+app.controller('homeController', ["$rootScope", "$scope", "$window", "$state", "categoryService", "recieptsService","recipeRepository",
+function($rootScope, $scope, $window, $state, categoryService, recieptsService,recipeRepository) {
     
     $scope.getRecieptsByCategory = function(category_id) {
         $rootScope.currentCategoryId = category_id;
@@ -23,7 +20,7 @@ function homeController($rootScope, $scope, $window, $state, categoryService, re
         $state.go('favourites');
     }
     
-    $scope.init = function() {    
+    $scope.init = function() { 
         categoryService.getCategories().$promise.then(
         function(data) {
             $scope.categories = data;
@@ -32,4 +29,4 @@ function homeController($rootScope, $scope, $window, $state, categoryService, re
             $scope.getRecieptsByCategory($rootScope.currentCategoryId);  
         }); 
     };
-}
+}]);
