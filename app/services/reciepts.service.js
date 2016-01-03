@@ -19,7 +19,6 @@ function ($http, $q, $rootScope, recipeRepository) {
 	recieptsService.getRecieptById = function(id){ 
         var recipe = recipeRepository.show({id : id}); 
 
-        console.log(recipe);
         return recipe;
     }
 

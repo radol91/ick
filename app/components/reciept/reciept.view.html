@@ -24,12 +24,12 @@
         </ul>
         <div class="reciept_container">
             <div class="reciept_content">
-                <img ng-src="{{reciept.ImageUrl}}"/>
+                <img ng-show="(reciept.ImageUrl)" ng-src="{{reciept.ImageUrl}}"/>
                 <h3>{{reciept.Title}} - Składniki</h3>
 <!--                <p>{{reciept.description}}</p>-->
             </div>
             <div class=bottom-content>
-                    <button type="button" class="btn btn-default right" class="btn btn-default" ng-click="showRecipeSteps(reciept.Id)">
+                    <button type="button" class="btn btn-default right" ng-click="showRecipeSteps(reciept.Id)">
                         Kroki przygotowania<span class="glyphicon glyphicon-chevron-right icon-right"></span>
                     </button>
                     </from>

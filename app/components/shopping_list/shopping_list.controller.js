@@ -13,12 +13,6 @@ function shoppingListController($scope, $http, $window, $q, $state) {
     $scope.items[3] = {id: 4, desc: "cukier 1 kg" , is_done: true};
     $scope.items[4] = {id: 5, desc: "cukier 1 kg" , is_done: true};
     $scope.items[5] = {id: 6, desc: "cukier 1 kg" , is_done: true};
-    $scope.items[6] = {id: 7, desc: "cukier 1 kg" , is_done: true};
-    $scope.items[7] = {id: 8, desc: "cukier 1 kg" , is_done: true};
-    $scope.items[8] = {id: 9, desc: "cukier 1 kg" , is_done: true};
-    $scope.items[9] = {id: 10, desc: "cukier 1 kg" , is_done: true};
-    $scope.items[10] = {id: 11, desc: "cukier 1 kg" , is_done: true};
-    $scope.items[11] = {id: 12, desc: "cukier 1 kg" , is_done: true};
     
     $scope.toggleItem = function(item)
     {

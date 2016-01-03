@@ -1,32 +1,26 @@
 'use strict';
 
-app.controller('favouritesController', ["$rootScope","$cookies","$scope", "$window", "$state", "categoryService", "recieptsService",
-function($rootScope, $cookies, $scope, $window, $state, categoryService, recieptsService) {
+app.controller('favouritesController', ["$rootScope","$cookies","$scope", "$window", "$state", "categoryService", "recieptsService","favouriteService",
+function($rootScope, $cookies, $scope, $window, $state, categoryService, recieptsService,favouriteService) {
     
     $scope.init = function() { 
         categoryService.getCategories().$promise.then(
         function(data) {
             $scope.categories = data;
         });
+        
+        $scope.favourites = favouriteService.getFavouriteRecipes();
+          
     };
     
     $scope.addToFavourites = function(recipe_id){
-        var current =  $cookies.get('favouriteIDs');
-        var favourites = current ? JSON.parse(current) : [];
-        var newValue = {'id': recipe_id};
-        var valueExists = false;
-                
-        for(var i=0; i < favourites.length; i++){
-            if (favourites[i].id == recipe_id){
-                valueExists = true;
-            }
-        }
+        favouriteService.addNew(recipe_id);
+    }
+    
+    $scope.removeFromFavourites = function(recipe_id){
+        favouriteService.removeFromFavourites(recipe_id);
         
-        if (!valueExists){
-            favourites.push(newValue);      
-        }
-        
-        $cookies.put('favouriteIDs',JSON.stringify(favourites));
+        $scope.favourites = favouriteService.getFavouriteRecipes();
     }
     
     $scope.getRecieptsByCategory = function(category_id) {
