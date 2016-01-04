@@ -1,9 +1,10 @@
 <div class="row-fulid">
     <div id="container" class="content_area fill">
+        <p class="info">Wpisz w polu co trzeba wykonać w jednym z kroków i potwierdź klikająć +. </br>Po zakończeniu dodawania kroków kliknij 'Zapisz przepis'.</p>
         <label for="reciept_steps"><span class="required">*</span>Kroki:</label>
         <div class="cold-lg-9 col-md-9 col-sm-12 col-xs-12">
             <div class="col-lg-8 col-md-8 column col-sm-11 col-xs-11">
-                <textarea class="form-control" id="reciept_steps" rows="2" name="reciept[reciept_steps]"/>
+                <textarea class="form-control" id="reciept_steps" rows="2"/>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                 <button type="button" class="btn btn-default  add-button">
@@ -13,10 +14,10 @@
         </div>
         <div class="bottom-content col-md-12">
             <button type="button" class="btn btn-default left" 
-                    ng-click="newRecipeIngredients(reciept.Id)">
+                    ng-click="newRecipeIngredients()">
                 <span class="glyphicon glyphicon-chevron-left icon-left"></span>Dodaj składniki
             </button>
-            <button class="btn btn-default right">
+            <button ng-click="saveRecipe()" class="btn btn-default right">
                 <span class="glyphicon glyphicon-floppy-disk icon-left"></span>Zapisz przepis
             </button>
         </div>

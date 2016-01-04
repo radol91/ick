@@ -9,6 +9,19 @@ label {
     display:block;
     color: white;
     margin-top: 5px;
+    font-size: 16px;
+}
+
+p.info {
+    color: black;
+    font-size: 16px;
+    font-style: oblique;
+    background-color: blanchedalmond;
+    border-width: 3px;
+    border-color: firebrick;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 5px;
 }
 
 .column { 

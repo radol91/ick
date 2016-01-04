@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('homeController', ["$resource","$rootScope", "$scope", "$window", "$state", "categoryService", "recieptsService","recipeRepository",
-function($resource, $rootScope, $scope, $window, $state, categoryService, recieptsService,recipeRepository) {
+app.controller('homeController', ["$resource","$rootScope", "$scope", "$state", "categoryService", "recieptsService","recipeRepository",
+function($resource, $rootScope, $scope, $state, categoryService, recieptsService,recipeRepository) {
     
     $scope.getRecieptsByCategory = function(category_id) {
         $rootScope.currentCategoryId = category_id;
@@ -13,21 +13,25 @@ function($resource, $rootScope, $scope, $window, $state, categoryService, reciep
     };
     
     $scope.addNewReciept = function(){
-        $state.go('reciept/new');
+        var category = $scope.categories[functiontofindIndexByKeyValue($scope.categories,"Id",$rootScope.currentCategoryId)]; 
+
+        var recipe = {
+            Title : null,
+            Description : null,
+            ImageUrl : $rootScope.defaultImage, 
+            Categories : [category],
+            Ingredients : [],
+            Steps : []
+        };
+        
+        $state.go('reciept/new', {obj : recipe});
     }
     
     $scope.showFavourites = function(){
         $state.go('favourites');
     }
     
-    $scope.init = function() {
-        recieptsService.getByCategoryId(11);
-        
-        //        var Recipe = $resource($rootScope.webservice + 'recipes/:id');
-//        
-//        var trecipe = Recipe.get({categoryId:11}).$promise.then(function(data){console.log(data);},function(data){console.log('Error');});
-        
-        
+    $scope.init = function() {        
         categoryService.getCategories().$promise.then(
         function(data) {
             $scope.categories = data;

@@ -2,17 +2,22 @@
     <div id="container" class="content_area column fill">
         <div class="col-lg-6 col-sm-12 col-md-12 col-xs-12 column">
                 <label for="reciept_ingredient"><span class="required">*</span>Składniki:</label>
-                <span class="col-md-7 col-sm-7 col-xs-12">
-                    <select ng-options="ingredient.name for ingredient in ingredients track by ingredient.id" 
-                            ng-model="new_ingredient"  class="form-control" id="reciept_ingredient"
-                            name="reciept[reciept_ingredient][id]"/>
+                <p class="info">Wybierz z listy składnik, podaj ilość i wybierz jednostkę następnie kliknij + </p>
+                <span class="col-md-5 col-sm-5 col-xs-12">
+                    <select ng-options="ingredient.Name for ingredient in ingredients track by ingredient.Id" 
+                            ng-model="availableIngredient" class="form-control">
+                        <option style="display:none" value="">Składnik...</option>
+                    </select>
                 </span>
                 <span class="col-md-2 col-sm-2 col-xs-12">
-                    <input class="form-control" id="reciept_ingridients_value" type="number" 
-                           name="reciept[reciept_ingredient][value]"/> 
+                    <input class="form-control" id="reciept_ingridients_value" type="number"/> 
                 </span>
-                <span class="col-md-2 col-sm-2 col-xs-11">
-                    <select ng-options="unit.name for unit in units track by unit.id" ng-model="new_ingredient_unit"                                      class="form-control" id="reciept_ingridients_unit" name="reciept[reciept_ingredient_unit][id]"/>          
+                <span class="col-md-3 col-sm-3 col-xs-11">
+                    <select ng-options="unit.Name for unit in units track by unit.Id" 
+                            ng-model="unit" 
+                            class="form-control" id="reciept_ingridients_unit">
+                        <option style="display:none" value="">Jednostka...</option>
+                    </select>          
                 </span>
                 <span  class="col-md-1 col-sm-1 col-xs-1" style="padding-left: 0px;">
                     <button type="button" class="btn btn-default add-button">
@@ -21,12 +26,11 @@
                 </span>
         </div>
         <div class="bottom-content col-md-12">
-                <button type="button" class="btn btn-default left" 
-                        ng-click="editRecipe(reciept.Id)">
+                <button type="button" class="btn btn-default left" ng-click="editRecipe()">
                     <span class="glyphicon glyphicon-chevron-left icon-left"></span>Edytuj przepis
                 </button>
                 <button type="button" class="btn btn-default right" 
-                        ng-click="newRecipeSteps(reciept.Id)">
+                        ng-click="newRecipeSteps()">
                     Dodaj kroki<span class="glyphicon glyphicon-chevron-right icon-right"></span>
                 </button>
         </div>

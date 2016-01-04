@@ -1,34 +1,30 @@
-<div class="row-fulid" ng-init="init()">
+<div class="row-fulid">
     <div id="container" class="content_area column fill">
         <div class="col-sm-12 col-md-6 column">
+            <p class="info">Uzupełnij tytuł przepisu, wybierz kategorię, wpisz opis, podaj adres do zdjęcia i przejdź dalej do dodawania składników. </p>
             <div class="col-md-12">
                 <label for="reciept_title"><span class="required">*</span>Nazwa przepisu:</label>
-                  <input class="form-control" id="reciept_title" type="text" ng-model="recipe.Title"/>
+                <input class="form-control" id="reciept_title" type="text" ng-model="recipe.Title"/>
             </div>
             <div class="col-md-12">
                   <label for="reciept_category"><span class="required">*</span>Kategoria:</label>
                   <select ng-options="category.Name for category in categories track by category.Id" 
                           ng-model="recipe.Categories[0]" class="form-control"/>
-
             </div>
             <div class="col-md-12">
-                  <label for="desc">Opis:</label>
-                  <textarea class="form-control reciept_desc_input" ng-model="recipe.Description" rows="10"></textarea>
+                  <label for="recipe_description">Opis:</label>
+                  <textarea id="recipe_description" class="form-control reciept_desc_input" 
+                            ng-model="recipe.Description" rows="10"></textarea>
             </div>
-
             <div class="col-md-12">
                 <label for="reciept_image">Zdjęcie:</label>
                 <input class="form-control" id="reciept_image" type="text" ng-model="recipe.ImageUrl"/>
             </div>
         </div>
         <div class="bottom-content col-md-12">
-                <button type="button" class="btn btn-default right" 
-                        ng-click="newRecipeIngredients(recipe.Id)">
-                    Dodaj składniki<span class="glyphicon glyphicon-chevron-right icon-right"></span>
-                </button>
-                <button ng-click="saveRecipe(recipe)" class="btn btn-default right">
-                    <span class="glyphicon glyphicon-floppy-disk icon-left"></span>Zapisz przepis
-                </button>
+            <button type="button" class="btn btn-default right" ng-click="newRecipeIngredients()">
+                Dodaj składniki<span class="glyphicon glyphicon-chevron-right icon-right"></span>
+            </button>
         </div>
     </div>
 </div>

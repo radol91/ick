@@ -1,7 +1,7 @@
 <div class="row-fluid">
     <div id="container" class="content_area col-md-12 col-sm-12 fill">    
         <div class="col-lg-6 col-md-12 col-sm-12 padding-top shopping_list">
-            <ul>
+            <ul id="shopping_list">
                 <li class="col-12-lg col-12-md col-12-sm col-12-xs" ng-repeat="item in items">
                     <span class="col-lg-12 col-md-12 col-sm-12">
                         <button ng-click="toggleItem(item)" type="button" class="btn btn-default col-2-sm">
@@ -13,7 +13,8 @@
                         <label id="item_label_{{item.id}}">{{item.desc}}</label>
                     </span>
                 </li>
-                <div class="col-lg-12 col-md-12 col-sm-12" style="padding-top: 20px;">
+            </ul>
+            <div class="col-lg-12 col-md-12 col-sm-12" style="padding-top: 20px;">
                     <span class="col-md-7 col-sm-7">
                         <textarea class="form-control resize_vertical" id="shopping_list_add" rows="1"/>
                     </span>
@@ -23,11 +24,9 @@
                         </button>
                     </span>
                 </div>
-            </ul>
-        </div>
-    
+        </div>    
         <div class="bottom-content col-md-12 center">
-            <button class="btn btn-default" type="button">
+            <button ng-click="clearAll()" class="btn btn-default" type="button">
                 <span class="glyphicon glyphicon-remove icon-left"></span>Wyczyść listę
             </button>
         </div>

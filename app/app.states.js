@@ -30,22 +30,24 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         .state('reciept/new', {
             url: '/reciept/new/',
             templateUrl: 'app/components/reciept/reciept.new.view.html',
-            controller: 'recieptNewController'
-        })
-        .state('reciept/edit', {
-            url: '/reciept/edit/:recipe_id',
-            templateUrl: 'app/components/reciept/reciept.new.view.html',
-            controller: 'recieptNewController'
+            controller: 'recieptNewController',
+            params: {
+                obj: null
+            },
         })
         .state('reciept/new/steps', {
-            url: '/reciept/new/steps/:recipe_id',
             templateUrl: 'app/components/reciept/reciept.new.steps.view.html',
-            controller: 'recieptNewController'
+            controller: 'recieptNewController',
+            params: {
+                obj: null
+            }
         })
         .state('reciept/new/ingredients', {
-            url: '/reciept/new/ingredients/:recipe_id',
             templateUrl: 'app/components/reciept/reciept.new.ingredients.view.html',
-            controller: 'recieptNewController'
+            controller: 'recieptNewController',
+            params: {
+                obj: null
+            }
         })
         .state('search', {
             url: '/search',

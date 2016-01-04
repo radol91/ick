@@ -27,7 +27,16 @@ function shoppingListController($scope, $http, $window, $q, $state) {
         }
     }
     
+    $scope.addItem = function(item){
+        
+    }
+    
     $scope.removeItem = function(item){
-        item.delete();
+        console.log(item);
+//        item.clear();
+    }
+    
+    $scope.clearAll = function(){
+        $('#shopping_list').empty();
     }
 }
