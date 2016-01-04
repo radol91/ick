@@ -14,8 +14,7 @@ function shoppingListController($scope, $http, $window, $q, $state) {
     $scope.items[4] = {id: 5, desc: "cukier 1 kg" , is_done: true};
     $scope.items[5] = {id: 6, desc: "cukier 1 kg" , is_done: true};
     
-    $scope.toggleItem = function(item)
-    {
+    $scope.toggleItem = function(item){
         var element = angular.element( document.querySelector( '#item_label_' + item.id ) )[0];
         
         if (element.classList.contains('item_label_toggled')){
@@ -28,8 +27,7 @@ function shoppingListController($scope, $http, $window, $q, $state) {
         }
     }
     
-    $scope.removeItem = function(item)
-    {
-        
+    $scope.removeItem = function(item){
+        item.delete();
     }
 }

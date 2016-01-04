@@ -17,16 +17,16 @@
             </div>
 
             <div class="col-md-12">
-                  <label for="reciept_image">Zdjęcie:</label>
-                  <button id="reciept_image">Dodaj zdjęcie</button>
+                <label for="reciept_image">Zdjęcie:</label>
+                <input class="form-control" id="reciept_image" type="text" ng-model="recipe.ImageUrl"/>
             </div>
         </div>
         <div class="bottom-content col-md-12">
                 <button type="button" class="btn btn-default right" 
-                        ng-click="newRecipeIngredients(reciept.Id)">
+                        ng-click="newRecipeIngredients(recipe.Id)">
                     Dodaj składniki<span class="glyphicon glyphicon-chevron-right icon-right"></span>
                 </button>
-                <button class="btn btn-default right" ng-click="updateRecipe(recipe)">
+                <button ng-click="saveRecipe(recipe)" class="btn btn-default right">
                     <span class="glyphicon glyphicon-floppy-disk icon-left"></span>Zapisz przepis
                 </button>
         </div>

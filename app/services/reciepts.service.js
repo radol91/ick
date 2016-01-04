@@ -9,8 +9,6 @@ function ($http, $q, $rootScope, recipeRepository) {
         recipeRepository.save(recipe,
             function success(item) {
                 if (successCallback != undefined){
-                    console.log('callback after create');
-                    console.log(item);
                     successCallback(item);
                 }
             });
@@ -24,13 +22,10 @@ function ($http, $q, $rootScope, recipeRepository) {
 
 	recieptsService.getByCategoryId = function(category_id){
         var recieptsFromCategory = recipeRepository.byCategoryId({categoryId : category_id});
-        
-        for(var i =0; i < recieptsFromCategory.length; i++){
-            recieptsService.setRecipeImageUrl(recieptsFromCategory[i])
-        }
-        
+                
         return recieptsFromCategory; 
     }
+    
     
     return recieptsService;
 }]);

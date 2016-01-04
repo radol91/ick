@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('homeController', ["$rootScope", "$scope", "$window", "$state", "categoryService", "recieptsService","recipeRepository",
-function($rootScope, $scope, $window, $state, categoryService, recieptsService,recipeRepository) {
+app.controller('homeController', ["$resource","$rootScope", "$scope", "$window", "$state", "categoryService", "recieptsService","recipeRepository",
+function($resource, $rootScope, $scope, $window, $state, categoryService, recieptsService,recipeRepository) {
     
     $scope.getRecieptsByCategory = function(category_id) {
         $rootScope.currentCategoryId = category_id;
@@ -20,7 +20,14 @@ function($rootScope, $scope, $window, $state, categoryService, recieptsService,r
         $state.go('favourites');
     }
     
-    $scope.init = function() { 
+    $scope.init = function() {
+        recieptsService.getByCategoryId(11);
+        
+        //        var Recipe = $resource($rootScope.webservice + 'recipes/:id');
+//        
+//        var trecipe = Recipe.get({categoryId:11}).$promise.then(function(data){console.log(data);},function(data){console.log('Error');});
+        
+        
         categoryService.getCategories().$promise.then(
         function(data) {
             $scope.categories = data;

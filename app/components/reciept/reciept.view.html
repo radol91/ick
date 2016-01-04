@@ -10,9 +10,9 @@
                 <button type="button" class="btn btn-default">
                     <span class="glyphicon glyphicon-barcode icon-left"></span>Dodaj do listy zakupów
                 </button>
-            </li>
+            </li> 
             <li ng-controller="favouritesController">      
-                <button ng-click="addToFavourites(reciept.Id)" type="button" class="btn btn-default">
+                <button ng-click="addToFavourites(recipe.Id)" type="button" class="btn btn-default">
                     <span class="glyphicon glyphicon-star-empty icon-left"></span>Dodaj do ulubionych
                 </button>
             </li>
@@ -24,12 +24,12 @@
         </ul>
         <div class="reciept_container">
             <div class="reciept_content">
-                <img ng-show="(reciept.ImageUrl)" ng-src="{{reciept.ImageUrl}}"/>
-                <h3>{{reciept.Title}} - Składniki</h3>
-<!--                <p>{{reciept.description}}</p>-->
+                <img ng-src="{{recipe.ImageUrl}}"/>
+                <h3>{{recipe.Title}} - Składniki</h3>
+                <p>{{recipe.Description}}</p>
             </div>
             <div class=bottom-content>
-                    <button type="button" class="btn btn-default right" ng-click="showRecipeSteps(reciept.Id)">
+                    <button type="button" class="btn btn-default right" ng-click="showRecipeSteps(recipe.Id)">
                         Kroki przygotowania<span class="glyphicon glyphicon-chevron-right icon-right"></span>
                     </button>
                     </from>

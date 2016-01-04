@@ -2,7 +2,7 @@
 
 app.controller('recieptController', ["$scope", "$http", "$window", "$q", "$state", "categoryService", "recieptsService",
 function ($scope, $http, $window, $q, $state, categoryService, recieptsService) {
-    $scope.reciept = recieptsService.getRecieptById($state.params.id); 
+    $scope.recipe = recieptsService.getRecieptById($state.params.id); 
     
     $scope.showRecipe = function(recipe_id){    
         $state.go('reciept', {id : recipe_id});
@@ -23,20 +23,22 @@ categoryService, recieptsService, ingredientService, unitService,recipeRepositor
             $scope.categories = data;
             var category = $scope.categories[
                 functiontofindIndexByKeyValue($scope.categories,"Id",$rootScope.currentCategoryId)]; 
-            
-            $scope.recipe = { Categories : [category] };       
+                        
+            $scope.recipe = {ImageUrl : $rootScope.defaultImage, Categories : [category], Steps : [], Ingredients: [] };       
         }); 
     }
     
-    $scope.updateRecipe = function(recipe){
+    $scope.saveRecipe = function(recipe){
         var recipe = recipe;
         
-        recipe.Categories = [];
-        
+        recipe.Categories = [recipe.Categories[0].Id];
         recipe.Steps = [];
         recipe.Ingredients = [];
         
-        recipe.ImageUrl = $rootScope.defaultImage;
+        console.log('before save');
+        console.log(recipe);
+
+
         
 //        recieptsService.createItem(recipe).$promise.then(
 //        function(data) {
@@ -45,16 +47,23 @@ categoryService, recieptsService, ingredientService, unitService,recipeRepositor
 //        }}); 
         
         recieptsService.createItem(recipe, function (newRecipe) {
-            console.log(newRecipe.Id);
+            console.log(newRecipe);
 //            $state.go('reciept', { id: newRecipe.Id });
         });
     }
     
-    $scope.editRecipe = function(recipe_id){
+    $scope.editRecipe = function(recipe_id){    
         $state.go('reciept/edit', {recipe_id : recipe_id});    
     }
     
+    $scope.deleteRecipe = function(recipe_id){
+        recieptsService.deleteItem(recipe_id, function (data) {
+
+        }); 
+    }
+    
     $scope.newRecipeIngredients = function(recipe_id){
+        $scope.ingredients = ingredientService.getIngredients();
         $state.go('reciept/new/ingredients', {recipe_id : recipe_id});    
     }
     

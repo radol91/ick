@@ -15,8 +15,7 @@ function($http, $q) {
 
 	var ingredientService = {};
 
-	ingredientService.getIngredients = function()
-	{
+	ingredientService.getIngredients = function(){
 		return ingredients;
 	}
 

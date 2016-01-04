@@ -14,7 +14,7 @@
     <div class="col-md-9 column clearfix">
         <div id="container" class="receipt_items_list content_area fill">
             <span ng-repeat="recipe in favourites" class="col-sm-12 col-md-6 col-lg-4">
-                <div class="thumbnail reciept_list_element" ng-click="showReciept(recipe.Id)">
+                <div class="thumbnail reciept_list_element" ng-controller="homeController" ng-click="showReciept(recipe.Id)">
                      <div style="float: right;">        
                         <button ng-click="removeFromFavourites(recipe.Id)" type="button" class="btn btn-default">
                             <span class="glyphicon glyphicon-remove icon-left" style="padding: 0;"></span>
@@ -23,7 +23,7 @@
                     <img src="{{recipe.ImageUrl}}"/>
                     <div class="caption">
                         <h4>{{recipe.Title}}</h4>
-<!--                        <p class="reciept_short_desc">{{recipe.Description}}</p>-->
+                        <p class="reciept_short_desc">{{recipe.Description}}</p>
                     </div>
                 </div>
             </span>
