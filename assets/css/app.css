@@ -268,9 +268,9 @@ p.reciept_short_desc
 .reciept_content h3
 {
     margin-top: 0;
-    color: burlywood;
+    color: #EFCF86;
     font-size: 28px;
-    text-decoration: underline;
+    font-weight: bold;
 }
 
 .reciept_content p

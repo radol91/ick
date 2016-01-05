@@ -2,7 +2,12 @@
     <div id="container" class="content_area fill">
         <div class="reciept_container">
             <div class="reciept_content">
-                <h3>{{recipe.Title}} - Kroki przygotowania</h3> 
+                <h3 style="color: #E8D3B1;">{{recipe.Title}} - Kroki przygotowania</h3>
+                <p>
+                    <span class="stepViewLine" ng-repeat="step in recipe.Steps">
+                        {{step.StepNo}}. {{step.Content}}</br>
+                    </span>
+                </p>
             </div>
             <div class="bottom-section">
                 <div class="bottom-aligner"></div>

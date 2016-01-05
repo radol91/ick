@@ -25,8 +25,14 @@
         <div class="reciept_container">
             <div class="reciept_content">
                 <img ng-src="{{recipe.ImageUrl}}"/>
-                <h3>{{recipe.Title}} - Składniki</h3>
+                <h3>{{recipe.Title}}</h3>
                 <p>{{recipe.Description}}</p>
+                <h3 style="color: #E8D3B1;">Składniki</h3>
+                <p>
+                    <span ng-repeat="ingredient in recipe.Ingredients">
+                        {{ingredient.Ingredient.Name}} {{ingredient.Quantity}} {{ingredient.Unit}}</br>
+                    </span>
+                </p>
             </div>
             <div class=bottom-content>
                     <button type="button" class="btn btn-default right" ng-click="showRecipeSteps(recipe.Id)">

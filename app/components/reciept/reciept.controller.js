@@ -2,8 +2,12 @@
 
 app.controller('recieptController', ["$scope", "$http", "$window", "$q", "$state", "categoryService", "recieptsService",
 function ($scope, $http, $window, $q, $state, categoryService, recieptsService) {
-    $scope.recipe = recieptsService.getRecieptById($state.params.id); 
+    recieptsService.getRecieptById($state.params.id).$promise.then(
+        function(data){
+            $scope.recipe = data;
+    }); 
         
+
     $scope.showRecipe = function(){ 
         $state.go('reciept', {id : $scope.recipe.Id});
     }
