@@ -3,15 +3,22 @@
 app.controller('recieptController', ["$scope", "$http", "$window", "$q", "$state", "categoryService", "recieptsService",
 function ($scope, $http, $window, $q, $state, categoryService, recieptsService) {
     $scope.recipe = recieptsService.getRecieptById($state.params.id); 
-    
-    console.log($scope.recipe);
-    
-    $scope.showRecipe = function(recipe_id){    
-        $state.go('reciept', {id : recipe_id});
+        
+    $scope.showRecipe = function(){ 
+        $state.go('reciept', {id : $scope.recipe.Id});
     }
     
-    $scope.showRecipeSteps = function(recipe_id){ 
-        $state.go('reciept/steps', {id : recipe_id});
+    $scope.showRecipeSteps = function(){ 
+        $state.go('reciept/steps', {id : $scope.recipe.Id});
+    }
+    
+    $scope.deleteRecipe = function(recipe){
+        recieptsService.deleteItem(recipe, 
+            function(data) {
+                console.log('Success delete');
+                $state.go('home');                  
+            }
+        );            
     }
 }]);
 
@@ -32,18 +39,20 @@ function ($compile, $rootScope, $scope, $state, $stateParams, categoryService, r
     
     $scope.availableIngredient = {};
     $scope.unit = {};
+    $scope.quantity = 0.5;
     $scope.stepContent = '';
     $scope.stepCounter = 0;
-    
+    $scope.ingredientCounter = 0;
+        
     $scope.units = unitService.getUnits();
         
     $scope.recipe = $stateParams.obj;
-             
+    
     $scope.saveRecipe = function(){
         var recipe = $scope.recipe;
                 
         recipe.Categories = [recipe.Categories[0].Id];
-        recipe.Ingredients = [];
+//        recipe.Ingredients = [];
         
         console.log("Before SAVE: ");
         console.log(recipe);
@@ -130,10 +139,68 @@ function ($compile, $rootScope, $scope, $state, $stateParams, categoryService, r
         
         $scope.updateSteps();
     }
+    
+    $scope.addNewIngredient = function(){
+        var ingredient = $scope.availableIngredient;
+        var unit = $scope.unit;
+        var quantity = $scope.quantity;
+                
+        var recipe = $scope.recipe;
+
+        if ( ingredient.Id != undefined && quantity >= 0.5 && unit.Id != undefined){
+            var ingNo = ++$scope.ingredientCounter;
+            $scope.putIngredientOnList(ingNo, ingredient.Name, unit.Name, quantity);
+            $scope.recipe.Ingredients.push({IngredientName : ingredient.Name,
+                                            IngredientId : ingredient.Id, 
+                                            Unit : unit.Name, 
+                                            Quantity : quantity});  
+            $compile($('#recipeIngredients > li')[ingNo-1])($scope);         
+        }
+    }
+    
+    $scope.putIngredientOnList = function(ingredientNo, ingredientName, unitName, quantity){
+            $('#recipeIngredients').append(
+            '<li class="step_input" id="ingredient_' + ingredientNo + '">' + ingredientName + ' ' + quantity + ' ' + unitName+
+                '<button compile-data class="btn btn-default right" ng-click="removeIngredient(' + ingredientNo + ')">' 
+                    + 'Usuń składnik' + 
+                '</button></li>');    
+    }
+    
+    $scope.removeIngredient = function(ingredientNo){
+        if ($('#ingredient_' + ingredientNo) != undefined){
+            $('#ingredient_' + ingredientNo).remove();
+            $scope.recipe.Ingredients.splice(ingredientNo-1, 1); 
+        }
         
-    $scope.deleteRecipe = function(recipe){
-//        recieptsService.deleteItem(recipe, function (data) {
-//
-//        }); 
+        $scope.updateIngredients();
+    }
+    
+    $scope.getIngredientsFromScope = function(){
+        $scope.updateIngredients();
+    }
+    
+    $scope.updateIngredients = function(){  
+        var oldIngredients =  $scope.recipe.Ingredients;
+        var newIngredients = [];
+        
+        $('#recipeIngredients').empty();
+        
+        $scope.ingredientCounter = 0;
+                    
+        for (var i = 0; i < oldIngredients.length ; i++){
+            var ingNo = ++$scope.ingredientCounter;
+            $scope.putIngredientOnList(
+                ingNo, oldIngredients[i].IngredientName, oldIngredients[i].Unit, oldIngredients[i].Quantity);
+            newIngredients.push({
+                                    IngredientName : oldIngredients[i].IngredientName,
+                                    IngredientId : oldIngredients[i].IngredientId, 
+                                    Unit :  oldIngredients[i].Unit, 
+                                    Quantity : oldIngredients[i].Quantity
+                                });  
+            $compile($('#recipeIngredients > li')[ingNo-1])($scope);         
+        }
+
+        $scope.recipe.Ingredients = newIngredients;        
+        $scope.ingredientCounter = newIngredients.length;
     }
 }]);

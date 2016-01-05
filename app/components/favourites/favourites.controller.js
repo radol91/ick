@@ -15,6 +15,7 @@ function($rootScope, $cookies, $scope, $window, $state, categoryService, reciept
     
     $scope.addToFavourites = function(recipe_id){
         favouriteService.addNew(recipe_id);
+        $state.go('favourites');
     }
     
     $scope.removeFromFavourites = function(recipe_id){

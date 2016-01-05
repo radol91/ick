@@ -13,6 +13,15 @@ function ($http, $q, $rootScope, recipeRepository) {
                 }
             });
     }
+   
+   recieptsService.deleteItem = function(recipe, successCallback){
+        recipeRepository.delete({id : recipe.Id},
+            function success(item) {
+                if (successCallback != undefined){
+                    successCallback(item);
+                }
+            });
+   }
 
 	recieptsService.getRecieptById = function(id){ 
         var recipe = recipeRepository.show({id : id}); 

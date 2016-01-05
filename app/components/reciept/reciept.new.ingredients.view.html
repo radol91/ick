@@ -1,8 +1,9 @@
-<div class="row-fulid">
+<div class="row-fulid" ng-init="getIngredientsFromScope()">
     <div id="container" class="content_area column fill">
         <div class="col-lg-6 col-sm-12 col-md-12 col-xs-12 column">
-                <label for="reciept_ingredient"><span class="required">*</span>Składniki:</label>
                 <p class="info">Wybierz z listy składnik, podaj ilość i wybierz jednostkę następnie kliknij + </p>
+                <ul id="recipeIngredients" style="padding-left: 0;"></ul>
+                <label for="reciept_ingredient"><span class="required">*</span>Składniki:</label>
                 <span class="col-md-5 col-sm-5 col-xs-12">
                     <select ng-options="ingredient.Name for ingredient in ingredients track by ingredient.Id" 
                             ng-model="availableIngredient" class="form-control">
@@ -10,7 +11,8 @@
                     </select>
                 </span>
                 <span class="col-md-2 col-sm-2 col-xs-12">
-                    <input class="form-control" id="reciept_ingridients_value" type="number"/> 
+                    <input ng-model="quantity" class="form-control" id="reciept_ingridients_value" 
+                           min="0.5" step="0.5" type="number"/> 
                 </span>
                 <span class="col-md-3 col-sm-3 col-xs-11">
                     <select ng-options="unit.Name for unit in units track by unit.Id" 
@@ -20,7 +22,7 @@
                     </select>          
                 </span>
                 <span  class="col-md-1 col-sm-1 col-xs-1" style="padding-left: 0px;">
-                    <button type="button" class="btn btn-default add-button">
+                    <button ng-click="addNewIngredient()" type="button" class="btn btn-default add-button">
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>
                 </span>

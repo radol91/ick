@@ -6,6 +6,7 @@ function ($rootScope, $resource){
     return $resource($rootScope.webservice + 'recipes/:id', {},{
         byCategoryId: { method: 'GET' , isArray: true },
         show: {method: 'GET'},
-        save: { method: 'POST' }
+        save: { method: 'POST' },
+        delete: {method: 'DELETE'}
     });
 }]);

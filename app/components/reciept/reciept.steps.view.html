@@ -1,35 +1,13 @@
 <div class="row-fluid">
     <div id="container" class="content_area fill">
-        <ul class="nav reciept_item_nav">
-            <li>      
-                <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-user icon-left"></span>Podziel się ze znajomymi
-                </button>
-            </li>
-            <li>      
-                <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-barcode icon-left"></span>Dodaj do listy zakupów
-                </button>
-            </li>
-            <li>      
-                <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-star-empty icon-left"></span>Dodaj do ulubionych
-                </button>
-            </li>
-            <li>      
-                <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-remove icon-left"></span>Usuń przepis
-                </button>
-            </li>
-        </ul>
         <div class="reciept_container">
             <div class="reciept_content">
-                <h3>{{reciept.Title}} - Kroki przygotowania</h3> 
+                <h3>{{recipe.Title}} - Kroki przygotowania</h3> 
             </div>
             <div class="bottom-section">
                 <div class="bottom-aligner"></div>
                 <div class=bottom-content>
-                    <button ng-click="showRecipe(reciept.Id)" type="button" class="btn btn-default">
+                    <button ng-click="showRecipe()" type="button" class="btn btn-default">
                         <span class="glyphicon glyphicon-chevron-left icon-left"></span>Składniki
                     </button>
                 </div>
