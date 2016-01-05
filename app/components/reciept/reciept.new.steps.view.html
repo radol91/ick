@@ -1,18 +1,22 @@
-<div class="row-fulid">
-    <div id="container" class="content_area fill">
-        <p class="info">Wpisz w polu co trzeba wykonać w jednym z kroków i potwierdź klikająć +. </br>Po zakończeniu dodawania kroków kliknij 'Zapisz przepis'.</p>
-        <label for="reciept_steps"><span class="required">*</span>Kroki:</label>
-        <div class="cold-lg-9 col-md-9 col-sm-12 col-xs-12">
-            <div class="col-lg-8 col-md-8 column col-sm-11 col-xs-11">
-                <textarea class="form-control" id="reciept_steps" rows="2"/>
+<div class="row-fulid" ng-init="getStepsFromScope()">
+    <div id="container" class="content_area fill">       
+        <div class="cold-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <p class="info">Wpisz w polu co trzeba wykonać w jednym z kroków i potwierdź klikająć +. 
+                </br>Po zakończeniu dodawania kroków kliknij 'Zapisz przepis'.
+            </p>
+            <ul id="recipeSteps" style="padding-left: 0;">
+            </ul>
+            <label for="reciept_steps"><span class="required">*</span>Kroki:</label>
+            <div class="col-lg-7 col-md-7 column col-sm-11 col-xs-11">
+                <textarea ng-model="stepContent" class="form-control" style="resize: vertical;" id="reciept_steps" rows="2"/>
             </div>
             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                <button type="button" class="btn btn-default  add-button">
+                <button type="button" class="btn btn-default add-button" ng-click="addNewStep()">
                     <span class="glyphicon glyphicon-plus"></span>
                 </button>
             </div>
         </div>
-        <div class="bottom-content col-md-12">
+        <div class="bottom-content col-md-12"> 
             <button type="button" class="btn btn-default left" 
                     ng-click="newRecipeIngredients()">
                 <span class="glyphicon glyphicon-chevron-left icon-left"></span>Dodaj składniki

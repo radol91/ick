@@ -2,7 +2,7 @@
  * Load modules for application
  */
 
-var app = angular.module('kuchnia4U', ['ngResource','ui.router','ngCookies']);
+var app = angular.module('kuchnia4U', ['ngResource','ui.router','ngCookies', 'ngSanitize']);
 
 app.run(function ($rootScope){
        $rootScope.currentCategoryId = 1;

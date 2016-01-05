@@ -4,6 +4,8 @@ app.controller('recieptController', ["$scope", "$http", "$window", "$q", "$state
 function ($scope, $http, $window, $q, $state, categoryService, recieptsService) {
     $scope.recipe = recieptsService.getRecieptById($state.params.id); 
     
+    console.log($scope.recipe);
+    
     $scope.showRecipe = function(recipe_id){    
         $state.go('reciept', {id : recipe_id});
     }
@@ -13,8 +15,8 @@ function ($scope, $http, $window, $q, $state, categoryService, recieptsService) 
     }
 }]);
 
-app.controller('recieptNewController', ["$rootScope", "$scope", "$state", "$stateParams", "categoryService", "recieptsService", "ingredientService", "unitService", 
-function ($rootScope, $scope, $state, $stateParams, categoryService, recieptsService, ingredientService, unitService) {
+app.controller('recieptNewController', ["$compile", "$rootScope", "$scope", "$state", "$stateParams", "categoryService", "recieptsService", "ingredientService", "unitService", 
+function ($compile, $rootScope, $scope, $state, $stateParams, categoryService, recieptsService, ingredientService, unitService) {
     
     categoryService.getCategories().$promise.then(
         function(data) {
@@ -30,24 +32,26 @@ function ($rootScope, $scope, $state, $stateParams, categoryService, recieptsSer
     
     $scope.availableIngredient = {};
     $scope.unit = {};
+    $scope.stepContent = '';
+    $scope.stepCounter = 0;
     
     $scope.units = unitService.getUnits();
-    
+        
     $scope.recipe = $stateParams.obj;
-     
+             
     $scope.saveRecipe = function(){
         var recipe = $scope.recipe;
                 
         recipe.Categories = [recipe.Categories[0].Id];
         recipe.Ingredients = [];
         
-        recipe.Steps = [];
-
         console.log("Before SAVE: ");
         console.log(recipe);
+        console.log(JSON.stringify(recipe));
         
         recieptsService.createItem(recipe, 
             function(newRecipe) {
+                console.log('Success save');
                 $state.go('reciept', { id: newRecipe.Id });                  
             },
             function(error){
@@ -72,6 +76,61 @@ function ($rootScope, $scope, $state, $stateParams, categoryService, recieptsSer
         $state.go('reciept/new/steps', {obj : recipe});    
     }
     
+    $scope.addNewStep = function(){     
+        var content = $scope.stepContent;  
+        
+        if ( content != '' || content == undefined){
+            var stepNo = ++$scope.stepCounter;
+            $scope.putStepOnList(stepNo, content);
+            $scope.recipe.Steps.push({StepNo : stepNo, Content : content});   
+            $compile($('#recipeSteps > li')[stepNo-1])($scope);            
+        }
+        
+        $scope.stepContent = '';
+    }
+    
+    $scope.updateSteps = function(){  
+        var oldSteps =  $scope.recipe.Steps;
+        var newSteps = [];
+        
+        $('#recipeSteps').empty();
+        
+        $scope.stepCounter = 0;
+            
+        for (var i = 0; i < oldSteps.length ; i++){
+            var stepNo = ++$scope.stepCounter;
+            $scope.putStepOnList(stepNo, oldSteps[i].Content);
+            newSteps.push({StepNo : stepNo, Content : oldSteps[i].Content});   
+            $compile($('#recipeSteps > li')[stepNo-1])($scope);         
+        }
+
+        $scope.recipe.Steps = newSteps;
+        
+        $scope.stepCounter = newSteps.length;
+        $scope.stepContent = '';
+    }
+    
+    $scope.getStepsFromScope = function(){
+        $scope.updateSteps();
+    }
+    
+    $scope.putStepOnList = function(stepNo, content){ 
+        $('#recipeSteps').append(
+            '<li class="step_input" id="step_' + stepNo + '">' + stepNo + '. ' + content + 
+                '<button compile-data class="btn btn-default right" ng-click="removeStep(' + stepNo + ')">' 
+                    + 'Usuń krok' + 
+                '</button></li>');   
+    }
+    
+    $scope.removeStep = function(stepNo){        
+        if ($('#step_' + stepNo) != undefined){
+            $('#step_' + stepNo).remove();
+            $scope.recipe.Steps.splice(stepNo-1, 1); 
+        }
+        
+        $scope.updateSteps();
+    }
+        
     $scope.deleteRecipe = function(recipe){
 //        recieptsService.deleteItem(recipe, function (data) {
 //
