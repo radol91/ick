@@ -1,42 +1,41 @@
 'use strict';
 
-app.controller('shoppingListController',shoppingListController);
-
-shoppingListController.$inject = ["$scope", "$http", "$window", "$q", "$state"];
-
-function shoppingListController($scope, $http, $window, $q, $state) {
+app.controller('shoppingListController', ["$scope", "$state", "$cookies", "shoppingListService",
+function ($scope, $state, $cookies, shoppingListService) {
     
-    $scope.items = [];
-    $scope.items[0] = {id: 1, desc: "maslo 1 kostka" , is_done: false};
-    $scope.items[1] = {id: 2, desc: "cukier 1 kg" , is_done: true};
-    $scope.items[2] = {id: 3, desc: "cukier 1 kg" , is_done: true};
-    $scope.items[3] = {id: 4, desc: "cukier 1 kg" , is_done: true};
-    $scope.items[4] = {id: 5, desc: "cukier 1 kg" , is_done: true};
-    $scope.items[5] = {id: 6, desc: "cukier 1 kg" , is_done: true};
-    
-    $scope.toggleItem = function(item){
-        var element = angular.element( document.querySelector( '#item_label_' + item.id ) )[0];
-        
-        if (element.classList.contains('item_label_toggled')){
-            element.classList.remove('item_label_toggled');  
-            item.is_done = false;
+    $scope.items = shoppingListService.getShoppingListItems();
+
+    $scope.toggleItem = function(itemId){
+        var element = $('#item_label_' + itemId );
+        var isDone = false;
+                
+        if (element.hasClass('item_label_toggled')){
+            isDone = false;
         }
         else{
-            element.classList.add('item_label_toggled');   
-            item.is_done = true;
+            isDone = true;
+        }
+        
+        shoppingListService.toggleItem(itemId, isDone);
+        $scope.items = shoppingListService.getShoppingListItems();
+    }
+    
+    $scope.addItem = function(){
+        if ($scope.itemDescription != '' && $scope.itemDescription != undefined){
+            shoppingListService.addNewToList($scope.itemDescription);
+            $scope.items = shoppingListService.getShoppingListItems();
+            $scope.itemDescription = '';
         }
     }
     
-    $scope.addItem = function(item){
-        
-    }
-    
-    $scope.removeItem = function(item){
-        console.log(item);
-//        item.clear();
+    $scope.removeItem = function(itemId){
+        shoppingListService.removeFromList(itemId);
+        $scope.items = shoppingListService.getShoppingListItems();
     }
     
     $scope.clearAll = function(){
-        $('#shopping_list').empty();
+        shoppingListService.clearAll();
+        $scope.itemDescription = '';
+        $scope.items = [];
     }
-}
+}]);

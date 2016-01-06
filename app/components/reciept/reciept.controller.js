@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('recieptController', ["$scope", "$http", "$window", "$q", "$state", "categoryService", "recieptsService",
-function ($scope, $http, $window, $q, $state, categoryService, recieptsService) {
+app.controller('recieptController', ["$scope", "$state", "categoryService", "recieptsService",
+function ($scope, $state, categoryService, recieptsService) {
     recieptsService.getRecieptById($state.params.id).$promise.then(
         function(data){
             $scope.recipe = data;

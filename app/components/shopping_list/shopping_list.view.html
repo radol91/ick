@@ -4,22 +4,24 @@
             <ul id="shopping_list">
                 <li class="col-12-lg col-12-md col-12-sm col-12-xs" ng-repeat="item in items">
                     <span class="col-lg-12 col-md-12 col-sm-12">
-                        <button ng-click="toggleItem(item)" type="button" class="btn btn-default col-2-sm">
+                        <button ng-click="toggleItem(item.id)" type="button" class="btn btn-default col-2-sm">
                             <span class="glyphicon glyphicon-ok"></span>
                         </button>
-                        <button ng-click="removeItem(item)" type="button" class="btn btn-default col-10-sm">
+                        <button ng-click="removeItem(item.id)" type="button" class="btn btn-default col-10-sm">
                             <span class="glyphicon glyphicon-remove"></span>
                         </button>    
-                        <label id="item_label_{{item.id}}">{{item.desc}}</label>
+                        <label id="item_label_{{item.id}}" 
+                               ng-class="item.is_done && 'item_label_toggled' || ''">{{item.desc}}</label>
                     </span>
                 </li>
             </ul>
             <div class="col-lg-12 col-md-12 col-sm-12" style="padding-top: 20px;">
                     <span class="col-md-7 col-sm-7">
-                        <textarea class="form-control resize_vertical" id="shopping_list_add" rows="1"/>
+                        <textarea ng-model="itemDescription" 
+                                  class="form-control resize_vertical" id="shopping_list_add" rows="1"/>
                     </span>
                     <span  class="col-md-4 col-sm-4">
-                        <button type="button" class="btn btn-default">
+                        <button ng-click="addItem()" type="button" class="btn btn-default">
                             <span class="glyphicon glyphicon-plus icon-left"></span>Dodaj element
                         </button>
                     </span>
