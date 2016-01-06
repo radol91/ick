@@ -7,7 +7,6 @@ function ($scope, $http, $window, $q, $state, categoryService, recieptsService) 
             $scope.recipe = data;
     }); 
         
-
     $scope.showRecipe = function(){ 
         $state.go('reciept', {id : $scope.recipe.Id});
     }

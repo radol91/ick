@@ -35,6 +35,11 @@ function ($http, $q, $rootScope, recipeRepository) {
         return recieptsFromCategory; 
     }
     
+    recieptsService.searchByQuery = function(queryStr){
+        var results = recipeRepository.byQuery({search : queryStr});
+        
+        return results;
+    }
     
     return recieptsService;
 }]);

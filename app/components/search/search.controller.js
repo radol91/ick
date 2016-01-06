@@ -11,13 +11,37 @@ function searchController($scope, $state, categoryService, recieptsService, ingr
         }
     );
     
+    $scope.searchResults = [];
+    
     $scope.appendSearchIngredient = function(ingredient)
     {
-        var searchIngredientIds = [];
-        var searchField = angular.element( document.querySelector( '#search_field' ) )[0];
-
-        searchField.innerHTML += '#' + ingredient.Name + ' ';
+        var selectionStart = $('#search_field')[0].selectionStart;
+        var selectionEnd = $('#search_field')[0].selectionEnd;
         
-        searchIngredientIds.push(ingredient.Id);
+        var newText = ingredient.Name + ' ';
+        $('#search_field').val($('#search_field').val() + newText);
+
+        $('#search_field')[0].selectionStart = selectionStart;
+        $('#search_field')[0].selectionEnd = selectionEnd;
+    }
+    
+    $scope.search = function(){
+        var searchField = $('#search_field');     
+        var query = searchField.val();
+        
+        var search = query.split(/[ ,]+/).join(',');
+        
+        recieptsService.searchByQuery(search).$promise.then(
+            function(data){
+                $scope.searchResults = data;
+                $('#search_field').val('');
+            },
+            function(error){
+                console.log(error);
+            });
+    }
+    
+    $scope.showRecipe = function(recipe_id){ 
+        $state.go('reciept', {id : recipe_id});
     }
 }

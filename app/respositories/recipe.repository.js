@@ -7,6 +7,7 @@ function ($rootScope, $resource){
         byCategoryId: { method: 'GET' , isArray: true },
         show: {method: 'GET'},
         save: { method: 'POST' },
-        delete: {method: 'DELETE'}
+        delete: {method: 'DELETE'},
+        byQuery: {method: 'GET', isArray: true}
     });
 }]);
