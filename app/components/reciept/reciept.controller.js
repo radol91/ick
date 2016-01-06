@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('recieptController', ["$scope", "$state", "categoryService", "recieptsService",
-function ($scope, $state, categoryService, recieptsService) {
+app.controller('recieptController', ["$scope", "$state", "categoryService", "recieptsService", "shoppingListService",
+function ($scope, $state, categoryService, recieptsService,shoppingListService) {
     recieptsService.getRecieptById($state.params.id).$promise.then(
         function(data){
             $scope.recipe = data;
@@ -18,10 +18,15 @@ function ($scope, $state, categoryService, recieptsService) {
     $scope.deleteRecipe = function(recipe){
         recieptsService.deleteItem(recipe, 
             function(data) {
-                console.log('Success delete');
+//                console.log('Success delete');
                 $state.go('home');                  
             }
         );            
+    }
+    
+    $scope.addToShoppingList = function(recipe){
+        shoppingListService.addFromRecipe(recipe.Ingredients);
+        $state.go('shopping_list');
     }
 }]);
 

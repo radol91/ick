@@ -1,7 +1,7 @@
 'use strict';
 
-app.factory('recieptsService', ['$http', '$q','$rootScope','recipeRepository', 
-function ($http, $q, $rootScope, recipeRepository) {
+app.factory('recieptsService', ['$rootScope','recipeRepository', 
+function ($rootScope, recipeRepository) {
     
    var recieptsService = {};
     

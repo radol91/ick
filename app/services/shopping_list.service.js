@@ -12,7 +12,6 @@ function($rootScope, $cookies,recieptsService){
     }
     
     shoppingListService.addNewToList = function(description){
-        console.log(description);
         var shoppingListItems = shoppingListService.getShoppingListItems();
         
         shoppingListItems.push({id: makeId(), is_done: false, desc: description});
@@ -44,8 +43,14 @@ function($rootScope, $cookies,recieptsService){
         $cookies.put('shoppingList',JSON.stringify(shoppingListItems));       
     }    
     
-    shoppingListService.addFromRecipe = function(recipe_id){
-        
+    shoppingListService.addFromRecipe = function(recipeIngredients){
+        for (var i = 0; i < recipeIngredients.length; i++){
+            var text = recipeIngredients[i].Ingredient.Name 
+            + ' ' + recipeIngredients[i].Quantity 
+            + ' ' + recipeIngredients[i].Unit;
+            
+            shoppingListService.addNewToList(text);
+        }
     }
     
     shoppingListService.clearAll = function(){
